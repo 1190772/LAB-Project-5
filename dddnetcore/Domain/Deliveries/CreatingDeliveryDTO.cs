@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace DDDSample1.Domain.Delivery;
+namespace DDDSample1.Domain.Deliveries;
 
 public class CreatingDeliveryDTO
 {
     public string DeliveryID {get;  set;}
-    public DateTime DateOfDelivery {get;  set;}
+    public DateTime DeliveryDate {get;  set;}
     public double Weight {get;  set;}
     public string WarehouseID {get;  set;}
     public double PutDeliveryTime {get;  set;}
@@ -17,7 +17,7 @@ public class CreatingDeliveryDTO
 
     
     this.DeliveryID = deliveryID;
-    this.DateOfDelivery = new DateTime(year, month, day);
+    this.DeliveryDate= new DateTime(year, month, day);
     this.Weight = weight;
     this.WarehouseID = warehouseID;
     this.PutDeliveryTime = putDeliveryTime;
