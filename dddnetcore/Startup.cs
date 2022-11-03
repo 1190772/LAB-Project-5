@@ -76,6 +76,9 @@ namespace DDDSample1
 
             services.AddTransient<IFamilyRepository,FamilyRepository>();
             services.AddTransient<FamilyService>();
+
+            services.AddTransient<IDeliveryService, DeliveryService>();
+            services.AddTransient<IDeliveryRepository, DeliveryRepository>();
         }
     }
 }
