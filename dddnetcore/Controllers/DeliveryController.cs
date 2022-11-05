@@ -2,13 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DDDNetCore.Domain.DTO;
-using DDDSample1.Domain.Introducao;
-using DDDSample1.Domain.Ligacao;
 using DDDSample1.Domain.Shared;
-using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain;
-using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain.DTO;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DDDSample1.Controllers
 {
@@ -68,7 +62,34 @@ namespace DDDSample1.Controllers
                 return BadRequest(new {Message = ex.Message});
             }
         }
-        
+
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<DeliveryDTO>> Update(Guid id, DeliveryDTO dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var cat = await_service.UpdateAsync(dto);
+
+                if (cat == null)
+                {
+                    return NotFound();
+                }
+                return Ok(cat); 
+            }
+            catch(BusinessRuleValidationException ex)
+            {
+                return BadRequest(new {Message = ex.Message});
+            }
+        }
+      
+
+      
         [HttpDelete("{id}")]
         public async Task<ActionResult<>> Delete(Guid id)
         {
