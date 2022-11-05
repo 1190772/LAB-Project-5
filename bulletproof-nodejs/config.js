@@ -39,18 +39,29 @@ export default {
   api: {
     prefix: '/api',
   },
+  
+
 
   controllers: {
-    role: {
-      name: "RoleController",
-      path: "../controllers/roleController"
+    truck: {
+      name: "TruckController",
+      path: "../controllers/truckController"
+    },
+    route: {
+      name: "RouteController",
+      path: "../controllers/routeController"
     }
   },
 
+
   repos: {
-    role: {
-      name: "RoleRepo",
-      path: "../repos/roleRepo"
+    truck: {
+      name: "TruckRepo",
+      path: "../repos/truckRepo"
+    },
+    route: {
+      name: "RouteRepo",
+      path: "../repos/routeRepo"
     },
     user: {
       name: "UserRepo",
@@ -58,10 +69,15 @@ export default {
     }
   },
 
+
   services: {
-    role: {
-      name: "RoleService",
-      path: "../services/roleService"
+    truck: {
+      name: "TruckService",
+      path: "../services/truckService"
+    },
+    route: {
+      name: "RouteService",
+      path: "../services/routeService"
     }
   },
 };

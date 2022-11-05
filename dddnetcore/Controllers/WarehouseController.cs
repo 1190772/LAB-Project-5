@@ -2,18 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDDNetCore.Domain.DTO;
+using DDDSample1.Domain.Introducao;
+using DDDSample1.Domain.Ligacao;
 using DDDSample1.Domain.Shared;
+using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain;
+using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain.DTO;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DDDSample1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeliveryController : ControllerBase
+    public class WarehouseController : ControllerBase
     {
-        
-        private readonly IDeliveryService _service;
-       
-
+        private readonly IWarehouseService _service;
         public DeliveryController( IDeliveryService service)
         {
             this._service = service;
@@ -21,7 +24,7 @@ namespace DDDSample1.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeliveryDTO>>> GetAll()
+        public async Task<ActionResult<IEnumerable<WarehouseDTO>>> GetAll()
         {
             return Ok(await _service.GetAllAsync());
             
@@ -30,23 +33,23 @@ namespace DDDSample1.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<>> GetById(Guid id)
         {
-           var delivery = await _service.GetByIdAsync(id);
-           if (delivery == null){
+           var warehouse = await _service.GetByIdAsync(id);
+           if (warehouse == null){
             return NotFound();
            }
-           return Ok(delivery);
+           return Ok(warehouse);
         }
 
         [HttpPost]
-        public async Task<ActionResult<DeliveryDTO>> Create(DeliveryDTO dto)
+        public async Task<ActionResult<WarehouseDTO>> Create(WarehouseDTO dto)
         {
             try
             {
-                var deliveryId = await _service.GetById(dto.Id);
+                var warehouseId = await _service.GetById(dto.Id);
               
-                if (!(deliveryId== null))
+                if (!(warehouseId== null))
                 {
-                    throw new BusinessRuleValidationException("The delivery already exists");
+                    throw new BusinessRuleValidationException("The warehouse already exists");
                 }
                 else
                 {
@@ -60,9 +63,8 @@ namespace DDDSample1.Controllers
             }
         }
 
-
         [HttpPut("{id}")]
-        public async Task<ActionResult<DeliveryDTO>> Update(Guid id, DeliveryDTO dto)
+        public async Task<ActionResult<WarehouseDTO>> Update(Guid id, WarehouseDTO dto)
         {
             if (id != dto.Id)
             {
@@ -84,18 +86,16 @@ namespace DDDSample1.Controllers
                 return BadRequest(new {Message = ex.Message});
             }
         }
-      
 
-      
         [HttpDelete("{id}")]
         public async Task<ActionResult<>> Delete(Guid id)
         {
-            var delivery = await _service.DeleteAsync(id);
-           if (delivery == null){
+            var warehouse = await _service.DeleteAsync(id);
+           if (warehouse == null){
             return NotFound();
            }
-           return Ok(delivery);
+           return Ok(warehouse);
         }
-        
+
     }
 }
