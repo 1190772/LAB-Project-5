@@ -63,6 +63,30 @@ namespace DDDSample1.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<WarehouseDTO>> Update(Guid id, WarehouseDTO dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var cat = await_service.UpdateAsync(dto);
+
+                if (cat == null)
+                {
+                    return NotFound();
+                }
+                return Ok(cat); 
+            }
+            catch(BusinessRuleValidationException ex)
+            {
+                return BadRequest(new {Message = ex.Message});
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult<>> Delete(Guid id)
         {
