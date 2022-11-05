@@ -41,9 +41,6 @@ namespace DDDSample1.Controllers
             return NotFound();
            }
            return Ok(delivery);
-        
-    
-    
         }
 
         [HttpPost]
