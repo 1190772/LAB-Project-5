@@ -3,8 +3,8 @@ import { Inject, Service } from 'typedi';
 import config from "../../config";
 
 import ITruckController from "./IControllers/ITruckController";
-import IRoleService from '../services/IServices/IRoleService';
-import IRoleDTO from '../dto/IRoleDTO';
+import ITruckService from '../services/IServices/ITruckService';
+import ITruckDTO from "../dto/ITruckDTO";
 
 import { Result } from "../core/logic/Result";
 
@@ -12,19 +12,19 @@ import { Result } from "../core/logic/Result";
 @Service()
 export default class TruckController implements ITruckController /* TODO: extends ../core/infra/BaseController */ {
   constructor(
-      @Inject(config.services.truck.name) private roleServiceInstance : IRoleService
+      @Inject(config.services.truck.name) private truckServiceInstance : ITruckService
   ) {}
 
   public async createTruck(req: Request, res: Response, next: NextFunction) {
     try {
-      const truckOrError = await this.roleServiceInstance.createRole(req.body as IRoleDTO) as Result<IRoleDTO>;
+      const truckOrError = await this.truckServiceInstance.createTruck(req.body as ITruckDTO) as Result<ITruckDTO>;
 
       if (truckOrError.isFailure) {
         return res.status(402).send();
       }
 
-      const roleDTO = truckOrError.getValue();
-      return res.json( roleDTO ).status(201);
+      const truckDTO = truckOrError.getValue();
+      return res.json( truckDTO ).status(201);
     }
     catch (e) {
       return next(e);
@@ -33,14 +33,14 @@ export default class TruckController implements ITruckController /* TODO: extend
 
   public async updateTruck(req: Request, res: Response, next: NextFunction) {
     try {
-      const roleOrError = await this.roleServiceInstance.updateRole(req.body as IRoleDTO) as Result<IRoleDTO>;
+      const truckOrError = await this.truckServiceInstance.updateTruck(req.body as ITruckDTO) as Result<ITruckDTO>;
 
-      if (roleOrError.isFailure) {
+      if (truckOrError.isFailure) {
         return res.status(404).send();
       }
 
-      const roleDTO = roleOrError.getValue();
-      return res.status(201).json( roleDTO );
+      const truckDTO = truckOrError.getValue();
+      return res.status(201).json( truckDTO );
     }
     catch (e) {
       return next(e);

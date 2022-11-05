@@ -22,6 +22,7 @@ import { Role } from '../domain/role';
 
 import { Result } from "../core/logic/Result";
 
+
 @Service()
 export default class UserService implements IUserService{
   constructor(
@@ -35,7 +36,7 @@ export default class UserService implements IUserService{
     try {
       const userDocument = await this.userRepo.findByEmail( userDTO.email );
       const found = !!userDocument;
-  
+
       if (found) {
         return Result.fail<{userDTO: IUserDTO, token: string}>("User already exists with email=" + userDTO.email);
       }
@@ -56,7 +57,7 @@ export default class UserService implements IUserService{
        * watches every API call and if it spots a 'password' and 'email' property then
        * it decides to steal them!? Would you even notice that? I wouldn't :/
        */
-      
+
 
       const salt = randomBytes(32);
       this.logger.silly('Hashing password');
@@ -178,5 +179,8 @@ export default class UserService implements IUserService{
       return Result.fail<Role>("Couldn't find role by id=" + roleId);
     }
   }
+
+
+
 
 }
