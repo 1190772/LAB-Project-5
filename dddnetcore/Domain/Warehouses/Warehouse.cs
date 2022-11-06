@@ -13,7 +13,7 @@ namespace DDDSample1.Domain.Warehouses
         public WarehouseDescription WarehouseDescription{get;private set;}
 
 
-        public Warehouse(string warehouseID,string street,string country,int doorNumber,double long,double alt, double lat,string warehouseDescription)
+        public Warehouse(string warehouseID,string street,string country,int doorNumber,double longi,double alt, double lat,string warehouseDescription)
         {
             this.WarehouseId= new WarehouseId(Guid.NewGuid());
             this.WarehouseAdress= new WarehouseAdress(street,country,doorNumber);

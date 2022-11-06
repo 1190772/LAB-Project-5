@@ -5,24 +5,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DDDSample1.Domain.Deliveries
 {
     [ComplexType]
-    public class DeliveryWarehouseID : IValueObject
+    public class DeliveryWarehouseId : IValueObject
     {
 
-        public string deliveryWarehouseID {get; private set;}
+        public string deliveryWarehouseId {get; private set;}
 
-        public DeliveryWarehouseID()
+        public DeliveryWarehouseId()
         {
 
         }
 
-        public DeliveryWarehouseID (string warehouseID)
+        public DeliveryWarehouseId (string warehouseID)
         {
-            this.updateWarehouseID(warehouseID);
+            this.updateWarehouseId(warehouseId);
         }
 
-        public void updateWarehouseID(double warehouseID){
+        public void updateWarehouseId(double warehouseId){
             try{
-                this.deliveryWarehouseID = warehouseID;
+                this.deliveryWarehouseId = warehouseId;
             } catch{
                 throw new BusinessRuleValidationException("Invalid Warehouse ID.");
             }

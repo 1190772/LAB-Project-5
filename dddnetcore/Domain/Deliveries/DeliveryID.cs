@@ -8,16 +8,16 @@ namespace DDDSample1.Domain.Deliveries
 
 
     [ComplexType]
-    public class DeliveryID : EntityID
+    public class DeliveryId : EntityId
     {
 
         [JsonConstructor]
-        public DeliveryID(Guid value) : base(value)
+        public DeliveryId(Guid value) : base(value)
         {
 
         }
 
-        public DeliveryID(String value) : base(value)
+        public DeliveryId(String value) : base(value)
         {
 
         }

@@ -5,7 +5,7 @@ using DDDSample1.Domain.Shared;
 
 namespace DDDSample1.Domain
 {
-    public interface IDeliveryRepository : IRepository<Delivery, DeliveryId>
+    public interface IWarehouseRepository : IRepository<Warehouse, WarehouseId>
     {
 
 

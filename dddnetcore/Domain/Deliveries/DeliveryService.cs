@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DDDSample1.Domain.Shared;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DDDSample1.Domain
 {
@@ -35,7 +34,7 @@ namespace DDDSample1.Domain
             if (delivery == null)
                 return null;
 
-            return deliveryMapper.toDto(delivery);
+            return deliveryMapper.toDTO(delivery);
         }
 
         public async Task<DeliveryDTO> AddAsync(DeliveryDTO dto)
