@@ -1,7 +1,7 @@
-import {Router} from 'express';
-import {celebrate, Joi} from 'celebrate';
+import { Router } from 'express';
+import { celebrate, Joi } from 'celebrate';
 
-import {Container} from 'typedi';
+import { Container } from 'typedi';
 import IRouteController from '../../controllers/IControllers/IRouteController';
 
 import config from '../../../config';
