@@ -10,15 +10,15 @@ import {TruckMap} from "../mappers/TruckMap";
 
 
 
-
-
 @Service()
 export default class TruckService implements ITruckService {
+
   constructor(
     @Inject(config.repos.truck.name) private truckRepo : ITruckRepo
   ) {}
 
   public async getTruck( truckId: string): Promise<Result<ITruckDTO>> {
+
     try {
       const truck = await this.truckRepo.findByDomainId(truckId);
 
@@ -36,8 +36,8 @@ export default class TruckService implements ITruckService {
 
 
   public async createTruck(truckDTO: ITruckDTO): Promise<Result<ITruckDTO>> {
-    try {
 
+    try {
       const truckOrError = await Truck.create( truckDTO );
 
       if (truckOrError.isFailure) {
@@ -56,6 +56,7 @@ export default class TruckService implements ITruckService {
   }
 
   public async updateTruck(truckDTO: ITruckDTO): Promise<Result<ITruckDTO>> {
+
     try {
       const truck = await this.truckRepo.findByDomainId(truckDTO.id);
 

@@ -7,7 +7,6 @@ import ITruckService from '../services/IServices/ITruckService';
 import ITruckDTO from "../dto/ITruckDTO";
 
 import { Result } from "../core/logic/Result";
-import IRouteDTO from "../dto/IRouteDTO";
 
 
 @Service()
