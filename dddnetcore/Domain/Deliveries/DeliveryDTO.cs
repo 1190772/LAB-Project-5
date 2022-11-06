@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace DDDSample1.Domain.Deliveries;
-
+namespace DDDSample1.Domain.Deliveries
+{
+    
 public class DeliveryDTO
 {
     public string DeliveryID {get;  set;}
@@ -25,4 +26,5 @@ public class DeliveryDTO
     }
 
 
+}
 }
