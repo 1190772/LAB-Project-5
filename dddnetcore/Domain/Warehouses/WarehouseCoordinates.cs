@@ -7,7 +7,7 @@ namespace DDDSample1.Domain.Warehouse
     [ComplexType]
     public class WarehouseCoordinates :IValueObject
     {
-        public double long {get; private set;}
+        public double longi {get; private set;}
         public double lat {get; private set;}
         public double alt {get; private set;}
 
@@ -16,14 +16,14 @@ namespace DDDSample1.Domain.Warehouse
 
         }
 
-        public WarehouseCoordinates(double long, double lat, double alt)
+        public WarehouseCoordinates(double longi, double lat, double alt)
         {
-            this.updateWarehouseCoordinates(long,lat,alt);
+            this.updateWarehouseCoordinates(longi,lat,alt);
         }
 
-        public void updateWarehouseCoordinates(double long, double lat, double alt){
+        public void updateWarehouseCoordinates(double longi, double lat, double alt){
             try{
-                this.long=long;
+                this.longi=longi;
                 this.lat=lat;
                 this.alt=alt;
             }catch{
