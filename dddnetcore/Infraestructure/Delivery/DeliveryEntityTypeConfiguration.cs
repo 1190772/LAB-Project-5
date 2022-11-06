@@ -11,7 +11,7 @@ namespace DDDSample1.Infrastructure.Delivery
             
             builder.HasKey(n => n.Id);
             builder.OwnsOne(u => u.DeliveryDate);
-            builder.OwnsOne(u => u.DeliveryWarehouseID);
+            builder.OwnsOne(u => u.DeliveryWarehouseId);
             builder.OwnsOne(u => u.DeliveryWeight);
             builder.OwnsOne(u => u.DeliveryInTime);
             builder.OwnsOne(u => u.DeliveryOutTime);
