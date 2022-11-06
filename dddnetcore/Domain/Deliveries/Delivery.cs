@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using DDDSample1.Domain.Shared;
-using DDDNetCore.Domain.Shared;
-using System.ComponentModel.DataAnnotations;
 
 namespace DDDSample1.Domain.Deliveries
 
