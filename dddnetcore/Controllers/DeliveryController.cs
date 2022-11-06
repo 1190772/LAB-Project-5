@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDDSample1.Domain;
+using DDDSample1.Domain.Deliveries;
 using DDDSample1.Domain.Shared;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DDDSample1.Controllers
 {
@@ -28,7 +31,7 @@ namespace DDDSample1.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<>> GetById(Guid id)
+        public async Task<ActionResult<DeliveryDTO>> GetById(Guid id)
         {
            var delivery = await _service.GetByIdAsync(id);
            if (delivery == null){
@@ -42,7 +45,7 @@ namespace DDDSample1.Controllers
         {
             try
             {
-                var deliveryId = await _service.GetById(dto.Id);
+                var deliveryId = await _service.GetByIdAsync(new Guid(dto.DeliveryId));
               
                 if (!(deliveryId== null))
                 {
@@ -51,7 +54,7 @@ namespace DDDSample1.Controllers
                 else
                 {
                     var u = await _service.AddAsync(dto);
-                    return CreatedAtAction(nameof(Create), new {id = u.Id}, u);
+                    return CreatedAtAction(nameof(Create), new {id = u.DeliveryId}, u);
                 }
             }
             catch (Exception ex)
@@ -64,14 +67,14 @@ namespace DDDSample1.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<DeliveryDTO>> Update(Guid id, DeliveryDTO dto)
         {
-            if (id != dto.Id)
+            if (id.ToString() != dto.DeliveryId)
             {
                 return BadRequest();
             }
 
             try
             {
-                var cat = await_service.UpdateAsync(dto);
+                var cat = await _service.UpdateAsync(dto);
 
                 if (cat == null)
                 {
@@ -88,7 +91,7 @@ namespace DDDSample1.Controllers
 
       
         [HttpDelete("{id}")]
-        public async Task<ActionResult<>> Delete(Guid id)
+        public async Task<ActionResult<DeliveryDTO>> Delete(Guid id)
         {
             var delivery = await _service.DeleteAsync(id);
            if (delivery == null){

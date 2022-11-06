@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DDDSample1.Infrastructure.Delivery
 {
-    public class DeliveryEntityTypeConfiguration : IEntityTypeConfiguration<Delivery>
+    public class DeliveryEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Deliveries.Delivery>
     {
-        public void Configure(EntityTypeBuilder<Delivery> builder)
+        public void Configure(EntityTypeBuilder<Domain.Deliveries.Delivery> builder)
         {
             
             builder.HasKey(n => n.Id);
-            builder.OwnsOne(u => u.DeliveryDate);
-            builder.OwnsOne(u => u.DeliveryWarehouseId);
-            builder.OwnsOne(u => u.DeliveryWeight);
-            builder.OwnsOne(u => u.DeliveryInTime);
-            builder.OwnsOne(u => u.DeliveryOutTime);
+            builder.OwnsOne(u => u.DateOfDelivery);
+            builder.OwnsOne(u => u.WarehouseId);
+            builder.OwnsOne(u => u.Weight);
+            builder.OwnsOne(u => u.PutDeliveryTime);
+            builder.OwnsOne(u => u.TakeDeliveryTime);
             
     
         }

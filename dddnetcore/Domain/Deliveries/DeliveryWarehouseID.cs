@@ -15,12 +15,12 @@ namespace DDDSample1.Domain.Deliveries
 
         }
 
-        public DeliveryWarehouseId (string warehouseID)
+        public DeliveryWarehouseId (string warehouseId)
         {
             this.updateWarehouseId(warehouseId);
         }
 
-        public void updateWarehouseId(double warehouseId){
+        public void updateWarehouseId(string warehouseId){
             try{
                 this.deliveryWarehouseId = warehouseId;
             } catch{
