@@ -7,13 +7,17 @@ import ITruckService from '../services/IServices/ITruckService';
 import ITruckDTO from "../dto/ITruckDTO";
 
 import { Result } from "../core/logic/Result";
+import IRouteDTO from "../dto/IRouteDTO";
 
 
 @Service()
 export default class TruckController implements ITruckController /* TODO: extends ../core/infra/BaseController */ {
+
   constructor(
       @Inject(config.services.truck.name) private truckServiceInstance : ITruckService
   ) {}
+
+
 
   public async createTruck(req: Request, res: Response, next: NextFunction) {
     try {
@@ -31,6 +35,8 @@ export default class TruckController implements ITruckController /* TODO: extend
     }
   };
 
+
+
   public async updateTruck(req: Request, res: Response, next: NextFunction) {
     try {
       const truckOrError = await this.truckServiceInstance.updateTruck(req.body as ITruckDTO) as Result<ITruckDTO>;
@@ -46,6 +52,23 @@ export default class TruckController implements ITruckController /* TODO: extend
       return next(e);
     }
   };
+
+
+
+
+
+
+  public async getTruck(req: Request, res: Response, next: NextFunction) {
+    try {
+      const truckOrError = (await this.truckServiceInstance.getTruck((req.body as ITruckDTO).id)) as Result<ITruckDTO>;
+      const truckDTO = truckOrError.getValue();
+      return res.status(201).json(truckDTO);
+    } catch (e) {
+      return next(e);
+    }
+  };
+
+
 
 
 }
