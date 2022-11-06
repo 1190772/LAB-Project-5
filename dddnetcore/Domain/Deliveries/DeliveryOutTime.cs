@@ -8,14 +8,14 @@ namespace DDDSample1.Domain.Deliveries
     public class DeliveryOutTime : IValueObject
     {
 
-        public string deliveryOutTime {get; private set;}
+        public double deliveryOutTime {get; private set;}
 
         public DeliveryOutTime()
         {
 
         }
 
-        public DeliveryOutTime (string time)
+        public DeliveryOutTime (double time)
         {
             this.updateDeliveryOutTime(time);
         }

@@ -19,12 +19,12 @@ export default {
   /**
    * That long string from mlab
    */
-  databaseURL: process.env.MONGODB_URI || "mongodb+srv://admin:YOXGQ0dcceNZCQN3@clusterlogistics.t0ztyq3.mongodb.net ",
+  databaseURL: process.env.MONGODB_URI || 'mongodb+srv://admin:YOXGQ0dcceNZCQN3@clusterlogistics.t0ztyq3.mongodb.net ',
 
   /**
    * Your secret sauce
    */
-  jwtSecret: process.env.JWT_SECRET || "my sakdfho2390asjod$%jl)!sdjas0i secret",
+  jwtSecret: process.env.JWT_SECRET || 'my sakdfho2390asjod$%jl)!sdjas0i secret',
 
   /**
    * Used by winston logger
@@ -39,45 +39,53 @@ export default {
   api: {
     prefix: '/api',
   },
-  
-
 
   controllers: {
+    role: {
+      name: 'RoleController',
+      path: '../controllers/roleController',
+    },
     truck: {
-      name: "TruckController",
-      path: "../controllers/truckController"
+      name: 'TruckController',
+      path: '../controllers/truckController',
     },
     route: {
-      name: "RouteController",
-      path: "../controllers/routeController"
-    }
+      name: 'RouteController',
+      path: '../controllers/routeController',
+    },
   },
-
 
   repos: {
+    role: {
+      name: 'RoleRepo',
+      path: '../controllers/roleRepo',
+    },
     truck: {
-      name: "TruckRepo",
-      path: "../repos/truckRepo"
+      name: 'TruckRepo',
+      path: '../repos/truckRepo',
     },
     route: {
-      name: "RouteRepo",
-      path: "../repos/routeRepo"
+      name: 'RouteRepo',
+      path: '../repos/routeRepo',
     },
     user: {
-      name: "UserRepo",
-      path: "../repos/userRepo"
-    }
+      name: 'UserRepo',
+      path: '../repos/userRepo',
+    },
   },
 
-
   services: {
+    role: {
+      name: 'RoleService',
+      path: '../controllers/roleService',
+    },
     truck: {
-      name: "TruckService",
-      path: "../services/truckService"
+      name: 'TruckService',
+      path: '../services/truckService',
     },
     route: {
-      name: "RouteService",
-      path: "../services/routeService"
-    }
+      name: 'RouteService',
+      path: '../services/routeService',
+    },
   },
 };

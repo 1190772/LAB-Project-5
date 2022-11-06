@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DDDSample1.Domain.Deliveries
 {
     [ComplexType]
-    public class DeliveryDate : iValueObject
+    public class DeliveryDate : IValueObject
     {
         public DateTime date { get; private set; }
 
@@ -17,6 +17,11 @@ namespace DDDSample1.Domain.Deliveries
         {
             this.updateDate(year, month, day);
 
+        }
+
+        public DeliveryDate(DateTime year)
+        {
+            this.date = year;
         }
 
         public void updateDate(int year, int month, int day)

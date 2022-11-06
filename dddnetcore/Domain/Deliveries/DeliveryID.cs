@@ -1,6 +1,7 @@
 using System;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
+using DDDSample1.Domain.Shared;
 
 
 namespace DDDSample1.Domain.Deliveries
@@ -22,13 +23,13 @@ namespace DDDSample1.Domain.Deliveries
 
         }
 
-        protected Object createFromString(String text)
+        protected override Object createFromString(String text)
         {
             return new Guid(text);
         }
 
 
-        public String AsString()
+        public override String AsString()
         {
             Guid obj = (Guid)base.ObjValue;
             return obj.ToString();

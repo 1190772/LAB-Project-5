@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DDDSample1.Infrastructure.Delivery
 {
-    public class DeliveryEntityTypeConfiguration : IEntityTypeConfiguration<Delivery>
+    public class WarehouseEntityTypeConfiguration : IEntityTypeConfiguration<Delivery>
     {
         public void Configure(EntityTypeBuilder<Delivery> builder)
         {
