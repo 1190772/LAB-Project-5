@@ -1,17 +1,16 @@
-import {NextFunction, Request, Response} from 'express';
-import {Inject, Service} from 'typedi';
+import { NextFunction, Request, Response } from 'express';
+import { Inject, Service } from 'typedi';
 import config from '../../config';
 
 import IRouteController from './IControllers/IRouteController';
 import IRouteService from '../services/IServices/IRouteService';
 import IRouteDTO from '../dto/IRouteDTO';
 
-import {Result} from '../core/logic/Result';
+import { Result } from '../core/logic/Result';
 
 @Service() // @ts-ignore
 export default class RouteController implements IRouteController /* TODO: extends ../core/infra/BaseController */ {
-  constructor(@Inject(config.services.route.name) private routeServiceInstance: IRouteService) {
-  }
+  constructor(@Inject(config.services.route.name) private routeServiceInstance: IRouteService) {}
 
   public async createRoute(req: Request, res: Response, next: NextFunction) {
     try {

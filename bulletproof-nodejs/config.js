@@ -19,7 +19,8 @@ export default {
   /**
    * That long string from mlab
    */
-  databaseURL: process.env.MONGODB_URI || 'mongodb+srv://admin:YOXGQ0dcceNZCQN3@clusterlogistics.t0ztyq3.mongodb.net ',
+  databaseURL:
+    process.env.MONGODB_URI || 'mongodb://mongoadmin:8b07b044ab2feb8bccca1f3a@vsgate-s1.dei.isep.ipp.pt:10305/admin',
 
   /**
    * Your secret sauce
@@ -58,7 +59,7 @@ export default {
   repos: {
     role: {
       name: 'RoleRepo',
-      path: '../controllers/roleRepo',
+      path: '../repos/roleRepo',
     },
     truck: {
       name: 'TruckRepo',
@@ -77,7 +78,7 @@ export default {
   services: {
     role: {
       name: 'RoleService',
-      path: '../controllers/roleService',
+      path: '../services/roleService',
     },
     truck: {
       name: 'TruckService',
