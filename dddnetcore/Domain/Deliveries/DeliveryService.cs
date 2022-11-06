@@ -34,7 +34,7 @@ namespace DDDSample1.Domain
             if (delivery == null)
                 return null;
 
-            return deliveryMapper.toDto(delivery);
+            return deliveryMapper.toDTO(delivery);
         }
 
         public async Task<DeliveryDTO> AddAsync(DeliveryDTO dto)
