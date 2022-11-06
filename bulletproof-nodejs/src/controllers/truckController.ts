@@ -10,7 +10,7 @@ import { Result } from "../core/logic/Result";
 
 
 @Service()
-export default class TruckController implements ITruckController /* TODO: extends ../core/infra/BaseController */ {
+export default class TruckController implements ITruckController {
 
   constructor(
       @Inject(config.services.truck.name) private truckServiceInstance : ITruckService
