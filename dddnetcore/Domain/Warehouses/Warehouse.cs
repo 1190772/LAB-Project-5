@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Channels;
+using DDDSample1.Domain.Deliveries;
 using DDDSample1.Domain.Shared;
+using DDDSample1.Domain.Warehouse;
 
 namespace DDDSample1.Domain.Warehouses
 
@@ -19,6 +22,19 @@ namespace DDDSample1.Domain.Warehouses
             this.WarehouseAdress= new WarehouseAdress(street,country,doorNumber);
             this.WarehouseCoordinates= new WarehouseCoordinates(longi,lat,alt);
             this.WarehouseDescription= new WarehouseDescription(warehouseDescription);
+        }
+
+        public void update(WarehouseDTO dto)
+        {
+            this.WarehouseId = new WarehouseId(dto.WarehouseID);
+            this.WarehouseAdress = new WarehouseAdress(dto.street,dto.country,dto.doorNumber);
+            this.WarehouseCoordinates = new WarehouseCoordinates(dto.longi,dto.lat,dto.alt);
+            this.WarehouseDescription = new WarehouseDescription(dto.Description);
+        }
+
+        private Warehouse()
+        {
+            
         }
     }
 }

@@ -1,10 +1,12 @@
 using System;
 using DDDSample1.Domain.Shared;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace DDDSample1.Domain.Warehouse
 {
-    [ComplextType]
+    
+    [ComplexType]
     public class WarehouseAdress : IValueObject
     {
         public string street {get;private set;}
@@ -16,6 +18,12 @@ namespace DDDSample1.Domain.Warehouse
             
         }
 
+        public override string ToString()
+        {
+            return street + " " + doorNumber + "," + country;
+        }
+
+        [JsonConstructor]
         public WarehouseAdress(string street, string country, int doorNumber)
         {
             this.updateWarehouseAdress(street,country,doorNumber);

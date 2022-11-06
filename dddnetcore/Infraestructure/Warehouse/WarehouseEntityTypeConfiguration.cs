@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DDDSample1.Infrastructure.Delivery
 {
-    public class WarehouseEntityTypeConfiguration : IEntityTypeConfiguration<Delivery>
+    public class WarehouseEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Warehouses.Warehouse>
     {
-        public void Configure(EntityTypeBuilder<Delivery> builder)
+        public void Configure(EntityTypeBuilder<Domain.Warehouses.Warehouse> builder)
         {
             
-            builder.HasKey(n => n.Id);
+            builder.HasKey(n => n.WarehouseId);
             builder.OwnsOne(u => u.WarehouseAdress);
             builder.OwnsOne(u => u.WarehouseCoordinates);
             builder.OwnsOne(u => u.WarehouseDescription);

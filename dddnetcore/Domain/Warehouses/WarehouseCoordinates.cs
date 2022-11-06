@@ -1,27 +1,29 @@
 using System;
 using DDDSample1.Domain.Shared;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace DDDSample1.Domain.Warehouse
 {
     [ComplexType]
     public class WarehouseCoordinates :IValueObject
     {
-        public string longi {get; private set;}
-        public string lat {get; private set;}
-        public string alt {get; private set;}
+        public double longi {get; private set;}
+        public double lat {get; private set;}
+        public double alt {get; private set;}
 
         public WarehouseCoordinates()
         {
 
         }
 
-        public WarehouseCoordinates(string longi, string lat, string alt)
+        [JsonConstructor]
+        public WarehouseCoordinates(double longi, double lat, double alt)
         {
             this.updateWarehouseCoordinates(longi,lat,alt);
         }
 
-        public void updateWarehouseCoordinates(string longi, string lat, string alt){
+        public void updateWarehouseCoordinates(double longi, double lat, double alt){
             try{
                 this.longi=longi;
                 this.lat=lat;

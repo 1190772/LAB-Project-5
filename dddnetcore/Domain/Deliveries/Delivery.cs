@@ -46,5 +46,10 @@ namespace DDDSample1.Domain.Deliveries
             this.PutDeliveryTime = new DeliveryInTime(dto.PutDeliveryTime);
             this.TakeDeliveryTime = new DeliveryOutTime(dto.TakeDeliveryTime);
         }
+
+        private Delivery()
+        {
+            
+        }
     }
 }

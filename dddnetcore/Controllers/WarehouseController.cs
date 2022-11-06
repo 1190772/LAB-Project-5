@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using DDDNetCore.Domain.DTO;
-using DDDSample1.Domain.Introducao;
-using DDDSample1.Domain.Ligacao;
+using DDDSample1.Domain;
 using DDDSample1.Domain.Shared;
-using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain;
-using LAPR5_3DJ_1190387_1190434_1190560_1191014.Domain.DTO;
+using DDDSample1.Domain.Warehouses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDDSample1.Controllers
@@ -17,7 +13,7 @@ namespace DDDSample1.Controllers
     public class WarehouseController : ControllerBase
     {
         private readonly IWarehouseService _service;
-        public DeliveryController( IDeliveryService service)
+        public WarehouseController( IWarehouseService service)
         {
             this._service = service;
             
@@ -31,7 +27,7 @@ namespace DDDSample1.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<>> GetById(Guid id)
+        public async Task<ActionResult<WarehouseDTO>> GetById(Guid id)
         {
            var warehouse = await _service.GetByIdAsync(id);
            if (warehouse == null){
@@ -45,7 +41,7 @@ namespace DDDSample1.Controllers
         {
             try
             {
-                var warehouseId = await _service.GetById(dto.Id);
+                var warehouseId = await _service.GetByIdAsync(new Guid(dto.WarehouseID));
               
                 if (!(warehouseId== null))
                 {
@@ -54,7 +50,7 @@ namespace DDDSample1.Controllers
                 else
                 {
                     var u = await _service.AddAsync(dto);
-                    return CreatedAtAction(nameof(Create), new {id = u.Id}, u);
+                    return CreatedAtAction(nameof(Create), new {id = u.WarehouseID}, u);
                 }
             }
             catch (Exception ex)
@@ -66,14 +62,14 @@ namespace DDDSample1.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<WarehouseDTO>> Update(Guid id, WarehouseDTO dto)
         {
-            if (id != dto.Id)
+            if (id.ToString() != dto.WarehouseID)
             {
                 return BadRequest();
             }
 
             try
             {
-                var cat = await_service.UpdateAsync(dto);
+                var cat = await _service.UpdateAsync(dto);
 
                 if (cat == null)
                 {
@@ -88,7 +84,7 @@ namespace DDDSample1.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<>> Delete(Guid id)
+        public async Task<ActionResult<WarehouseDTO>> Delete(Guid id)
         {
             var warehouse = await _service.DeleteAsync(id);
            if (warehouse == null){

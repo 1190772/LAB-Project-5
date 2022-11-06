@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DDDSample1.Domain.Warehouse
 {
-    [ComplextType]
+    [ComplexType]
     public class WarehouseDescription :IValueObject
     {
         public string warehouseDescription{get; private set;}
@@ -16,7 +16,7 @@ namespace DDDSample1.Domain.Warehouse
 
         public WarehouseDescription(string warehouseDescription)
         {
-            this.updateDescription(warehouseDescription);
+            this.updateWarehouseDescription(warehouseDescription);
         }
 
         public void updateWarehouseDescription(string warehouseDescription){
