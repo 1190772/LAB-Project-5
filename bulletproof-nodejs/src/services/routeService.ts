@@ -1,16 +1,15 @@
-import {Inject, Service} from 'typedi';
+import { Inject, Service } from 'typedi';
 import config from '../../config';
 import IRouteDTO from '../dto/IRouteDTO';
-import {Route} from '../domain/route';
+import { Route } from '../domain/route';
 import IRouteRepo from '../services/IRepos/IRouteRepo';
 import IRouteService from './IServices/IRouteService';
-import {Result} from '../core/logic/Result';
-import {RouteMap} from '../mappers/RouteMap';
+import { Result } from '../core/logic/Result';
+import { RouteMap } from '../mappers/RouteMap';
 
 @Service()
 export default class RouteService implements IRouteService {
-  constructor(@Inject(config.repos.route.name) private routeRepo: IRouteRepo) {
-  }
+  constructor(@Inject(config.repos.route.name) private routeRepo: IRouteRepo) {}
 
   public async getRoute(routeId: string): Promise<Result<IRouteDTO>> {
     try {
