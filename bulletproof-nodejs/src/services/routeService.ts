@@ -26,6 +26,19 @@ export default class RouteService implements IRouteService {
     }
   }
 
+  public async getAllRoutes(): Promise<Result<IRouteDTO[]>> {
+    try {
+      const routes = await this.routeRepo.findAll();
+      const dtos = [];
+      for (let i = 0; i < routes.length; i++) {
+        dtos.push(RouteMap.toDTO(routes[i]));
+      }
+      return Result.ok(dtos);
+    } catch (e) {
+      throw e;
+    }
+  }
+
   public async createRoute(routeDTO: IRouteDTO): Promise<Result<IRouteDTO>> {
     try {
       const routeOrError = await Route.create(routeDTO);
