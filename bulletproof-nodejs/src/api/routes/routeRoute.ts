@@ -42,18 +42,7 @@ export default (app: Router) => {
     (req, res, next) => ctrl.updateRoute(req, res, next),
   );
 
-  route.get(
-    '',
-    celebrate({
-      body: Joi.object({
-        id: Joi.string().required(),
-        idWarehouseStart: Joi.string(),
-        idWarehouseDestination: Joi.string(),
-        distance: Joi.number(),
-        time: Joi.number(),
-        energy: Joi.number(),
-      }),
-    }),
-    (req, res, next) => ctrl.getRoute(req, res, next),
-  );
+  route.get('/:id', (req, res, next) => ctrl.getRoute(req, res, next));
+
+  route.get('', (req, res, next) => ctrl.getAllRoutes(req, res, next));
 };

@@ -21,7 +21,7 @@ export default class RouteController implements IRouteController /* TODO: extend
       }
 
       const routeDTO = routeOrError.getValue();
-      return res.json(routeDTO).status(201);
+      return res.status(201).json(routeDTO);
     } catch (e) {
       return next(e);
     }
@@ -36,7 +36,7 @@ export default class RouteController implements IRouteController /* TODO: extend
       }
 
       const routeDTO = routeOrError.getValue();
-      return res.status(201).json(routeDTO);
+      return res.status(200).json(routeDTO);
     } catch (e) {
       return next(e);
     }
@@ -44,9 +44,19 @@ export default class RouteController implements IRouteController /* TODO: extend
 
   public async getRoute(req: Request, res: Response, next: NextFunction) {
     try {
-      const routeOrError = (await this.routeServiceInstance.getRoute((req.body as IRouteDTO).id)) as Result<IRouteDTO>;
+      const routeOrError = (await this.routeServiceInstance.getRoute(req.params.id)) as Result<IRouteDTO>;
       const routeDTO = routeOrError.getValue();
-      return res.status(201).json(routeDTO);
+      return res.status(200).json(routeDTO);
+    } catch (e) {
+      return next(e);
+    }
+  }
+
+  public async getAllRoutes(req: Request, res: Response, next: NextFunction) {
+    try {
+      const routeOrError = (await this.routeServiceInstance.getAllRoutes()) as Result<IRouteDTO[]>;
+      const routeDTO = routeOrError.getValue();
+      return res.status(200).json(routeDTO);
     } catch (e) {
       return next(e);
     }
