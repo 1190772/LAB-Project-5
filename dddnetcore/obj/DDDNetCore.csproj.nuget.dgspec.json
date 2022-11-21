@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nandinho\\Desktop\\projetoLapr\\dddnetcore\\DDDNetCore.csproj": {}
+    "C:\\Users\\José Silva\\Desktop\\projeto_Lapr5\\dddnetcore\\DDDNetCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nandinho\\Desktop\\projetoLapr\\dddnetcore\\DDDNetCore.csproj": {
+    "C:\\Users\\José Silva\\Desktop\\projeto_Lapr5\\dddnetcore\\DDDNetCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nandinho\\Desktop\\projetoLapr\\dddnetcore\\DDDNetCore.csproj",
+        "projectUniqueName": "C:\\Users\\José Silva\\Desktop\\projeto_Lapr5\\dddnetcore\\DDDNetCore.csproj",
         "projectName": "DDDNetCore",
-        "projectPath": "C:\\Users\\Nandinho\\Desktop\\projetoLapr\\dddnetcore\\DDDNetCore.csproj",
-        "packagesPath": "C:\\Users\\Nandinho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nandinho\\Desktop\\projetoLapr\\dddnetcore\\obj\\",
+        "projectPath": "C:\\Users\\José Silva\\Desktop\\projeto_Lapr5\\dddnetcore\\DDDNetCore.csproj",
+        "packagesPath": "C:\\Users\\José Silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\José Silva\\Desktop\\projeto_Lapr5\\dddnetcore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nandinho\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\José Silva\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp5.0"
