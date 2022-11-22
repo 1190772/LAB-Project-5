@@ -3,12 +3,9 @@
     <h2>EletricGo</h2>
   </div>
   <div class="site-menu">
-    <li [routerLinkActive]="'active'"><button><a href=routerLink>Admin</a></button></li>
+    <li ><a [routerLink]="['/warehouse-manager']"><button>Admin</button></a></li>
     <li [routerLinkActive]="'active'"><button><a href=routerLink>Warehouse Manager</a></button></li>
     <li [routerLinkActive]="'active'"><button><a href=routerLink>Logistics Manager</a></button></li>
     <li [routerLinkActive]="'active'"><button><a href=routerLink>Fleet Manager</a></button></li>
-  </div>
-  <div>
-   <router-outlet></router-outlet>
   </div>
 </div>

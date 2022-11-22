@@ -1,6 +1,7 @@
 .navbar{
   display: flex;
   background-color: darkseagreen;
+  width: 100%;
 }
 
 .site-name{

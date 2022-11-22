@@ -16,17 +16,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { WarehouseManagerComponent } from './warehouse-manager/warehouse-manager.component';
 import { LogisticsManagerComponent } from './logistics-manager/logistics-manager.component';
 import { FleetManagerComponent } from './fleet-manager/fleet-manager.component';
-import {RouterModule, Routes} from "@angular/router";
-
-const appRoute: Routes = [
-  {path: 'Admin', component: AdminComponent},
-  {path: 'Warehouse Manager', component: WarehouseManagerComponent},
-  {path: 'Logistics Manager', component: LogisticsManagerComponent},
-  {path: 'Fleet Manager', component: FleetManagerComponent}
-
-]
-
-
 
 @NgModule({
   declarations: [
@@ -48,7 +37,6 @@ const appRoute: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoute)
   ],
   providers: [],
   bootstrap: [AppComponent]
