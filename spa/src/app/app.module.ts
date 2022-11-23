@@ -16,6 +16,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { WarehouseManagerComponent } from './warehouse-manager/warehouse-manager.component';
 import { LogisticsManagerComponent } from './logistics-manager/logistics-manager.component';
 import { FleetManagerComponent } from './fleet-manager/fleet-manager.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { FleetManagerComponent } from './fleet-manager/fleet-manager.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatButtonModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
