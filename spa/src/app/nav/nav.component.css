@@ -1,10 +1,10 @@
-.navbar{
+.navbar {
   display: flex;
   background-color: #2c556c;
   width: 100%;
 }
 
-.site-name{
+.site-name {
   padding: 5px 30px;
   color: #18212a;
   font-size: x-large;
@@ -12,23 +12,23 @@
 
 }
 
-.site-image{
-  padding:10px -20px;
+.site-image {
+  padding: 10px -20px;
 }
 
-.site-menu{
-  padding: 20px 30px;
+.site-menu {
+  padding: 30px 30px;
   margin-left: 100px;
 }
 
-a{
+a {
   text-decoration: none;
-  color:#212F3D;
+  color: #212F3D;
   margin: 0px 50px;
 
 }
 
-.site-slogan{
+.site-slogan {
   width: 420px;
   margin-left: -180px;
   text-align: center;
@@ -36,7 +36,7 @@ a{
   padding: 28px 80px;
 }
 
-h3{
+h3 {
   font-size: 20px;
 }
 
@@ -93,12 +93,21 @@ h3{
   border: 2px solid #e7e7e7;
 }
 
-.button4:hover {background-color: #e7e7e7;}
+.button4:hover {
+  background-color: #e7e7e7;
+}
 
 .button5 {
   background-color: white;
   color: black;
   border: 2px solid #555555;
+
+  border-radius: 25px;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+
 }
 
 .button5:hover {
