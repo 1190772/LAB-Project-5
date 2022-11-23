@@ -1,0 +1,14 @@
+div {
+  background-color: rgb(192, 170, 45);
+  position: fixed;
+  overflow: scroll;
+  left: 50%;
+  bottom: 400px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  overflow:hidden;
+  border-radius:10px;
+  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.5);
+  padding-right: 40px;
+
+}
