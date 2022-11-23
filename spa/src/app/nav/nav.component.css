@@ -8,7 +8,12 @@
   padding: 5px 30px;
   color: darkgreen;
   font-size: x-large;
+  font-family: Fantasy;
 
+}
+
+.site-image{
+  padding:10px 10px;
 }
 
 .site-menu{
@@ -21,6 +26,18 @@ a{
   color:#212F3D;
   margin: 0px 50px;
 
+}
+
+.site-slogan{
+  width: 420px;
+  margin-left: -200px;
+  text-align: center;
+  color: black;
+  padding: 28px 80px;
+}
+
+h3{
+  font-size: 20px;
 }
 
 .button {

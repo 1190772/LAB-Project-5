@@ -1,17 +1,9 @@
 .header{
-  height: 280px;
+  height: 500px;
   padding:30px 70px;
   display: flex;
-  background-color: #fff;
+  background-color: #465721;
 }
 
-.site-slogan{
-  width: 420px;
-  margin-left: 50px;
-  text-align: center;
-  color: black;
-}
 
-h2{
-  font-size: 45px;
-}
+
