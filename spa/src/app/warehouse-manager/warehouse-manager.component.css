@@ -8,7 +8,7 @@
   transform: translate(-50%, -50%);
 
 
-  border-radius:10px;
+  border-radius: 10px;
   padding-right: 40px;
 }
 
@@ -26,10 +26,11 @@
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  margin:20px 20px 20px 100px;
+  margin: 20px 20px 20px 100px;
 }
 
-.button:hover {background-color: #8cb3cb
+.button:hover {
+  background-color: #8cb3cb
 }
 
 .button:active {
