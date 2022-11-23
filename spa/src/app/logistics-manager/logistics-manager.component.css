@@ -3,7 +3,7 @@ div {
   position: fixed;
   overflow: scroll;
   left: 50%;
-  bottom: 10px;
+  bottom: 400px;
   transform: translate(-50%, -50%);
   margin: 0 auto;
   overflow:hidden;

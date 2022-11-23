@@ -1,19 +1,19 @@
 .navbar{
   display: flex;
-  background-color: darkseagreen;
+  background-color: #2c556c;
   width: 100%;
 }
 
 .site-name{
   padding: 5px 30px;
-  color: darkgreen;
+  color: #18212a;
   font-size: x-large;
   font-family: Fantasy;
 
 }
 
 .site-image{
-  padding:10px 10px;
+  padding:10px -20px;
 }
 
 .site-menu{
@@ -30,7 +30,7 @@ a{
 
 .site-slogan{
   width: 420px;
-  margin-left: -200px;
+  margin-left: -180px;
   text-align: center;
   color: black;
   padding: 28px 80px;
