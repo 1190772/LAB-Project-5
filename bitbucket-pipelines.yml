@@ -1,30 +1,33 @@
-#  Template NodeJS build
-
-#  This template allows you to validate your NodeJS code.
-#  The workflow allows running tests and code linting on the default branch.
-
-image: node:16
-
 pipelines:
   default:
     - parallel:
         - step:
-            name: Build and Test
+            name: Build and Test Master Data
+            image: mcr.microsoft.com/dotnet/sdk:5.0
+            caches:
+              - dotnetcore
+            script:
+              - export PROJECT_MD=dddnetcore
+              - dotnet restore ./dddnetcore
+              - dotnet build $PROJECT_MD
+        - step:
+            name: Build and Test SPA
+            image: node:18.0.0
             caches:
               - node
             script:
-              - npm install
-              - npm test
+              - npm --prefix ./spa install
+              - npm --prefix ./spa install @angular/cli -g
+              - npm --prefix ./spa run build
+            artifacts:
+              - node_modules/ # Save modules for next steps
         - step:
-            name: Code linting
-            script:
-              - npm install eslint
-              - npx eslint .
+            name: Build and Test Feed Master Data
+            image: node:18.0.0
             caches:
               - node
-        - step:
-            name: Deploy to test
-            deployment: test
-            # trigger: manual  # Uncomment to make this a manual deployment.
             script:
-               - echo "Deploying to test environment"
+              - npm --prefix ./bulletproof-nodejs install
+              - npm --prefix ./bulletproof-nodejs run build
+            artifacts:
+              - node_modules/ # Save modules for next steps
