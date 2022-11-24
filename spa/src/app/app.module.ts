@@ -48,8 +48,8 @@ import { CreateTruckComponent } from './create-truck/create-truck.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
     MatButtonModule,
     MatButtonModule,
   ],
