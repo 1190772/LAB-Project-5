@@ -17,6 +17,12 @@ import { WarehouseManagerComponent } from './warehouse-manager/warehouse-manager
 import { LogisticsManagerComponent } from './logistics-manager/logistics-manager.component';
 import { FleetManagerComponent } from './fleet-manager/fleet-manager.component';
 import {MatButtonModule} from "@angular/material/button";
+import { CreateWarehouseComponent } from './create-warehouse/create-warehouse.component';
+import { CreateDeliveryComponent } from './create-delivery/create-delivery.component';
+import { CreateRouteComponent } from './create-route/create-route.component';
+import { CreateRoutePlanningComponent } from './create-route-planning/create-route-planning.component';
+import { GetRoutePlanningComponent } from './get-route-planning/get-route-planning.component';
+import { CreateTruckComponent } from './create-truck/create-truck.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import {MatButtonModule} from "@angular/material/button";
     NotificationComponent,
     WarehouseManagerComponent,
     LogisticsManagerComponent,
-    FleetManagerComponent
+    FleetManagerComponent,
+    CreateWarehouseComponent,
+    CreateDeliveryComponent,
+    CreateRouteComponent,
+    CreateRoutePlanningComponent,
+    GetRoutePlanningComponent,
+    CreateTruckComponent
   ],
   imports: [
     BrowserModule,

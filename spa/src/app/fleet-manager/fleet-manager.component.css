@@ -1,14 +1,38 @@
-div {
-  background-color: rgb(61, 80, 6);
+.fleet-manager-options {
+
   position: fixed;
-  overflow: scroll;
   left: 50%;
   bottom: 400px;
   transform: translate(-50%, -50%);
-  margin: 0 auto;
-  overflow:hidden;
-  border-radius:10px;
-  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.5);
-  padding-right: 40px;
 
+
+  border-radius: 10px;
+  padding-right: 40px;
+}
+
+.button {
+
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4163b7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin: 10px 10px 10px 48px;
+}
+
+.button:hover {
+  background-color: #8cb3cb
+}
+
+.button:active {
+  background-color: #183c4f;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
