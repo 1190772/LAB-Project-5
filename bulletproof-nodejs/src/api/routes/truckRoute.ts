@@ -1,7 +1,7 @@
-import {Router} from 'express';
-import {celebrate, Joi} from 'celebrate';
+import { Router } from 'express';
+import { celebrate, Joi } from 'celebrate';
 
-import {Container} from 'typedi';
+import { Container } from 'typedi';
 import ITruckController from '../../controllers/IControllers/ITruckController';
 
 import config from '../../../config';
@@ -46,5 +46,5 @@ export default (app: Router) => {
 
   route.get('/:id', (req, res, next) => ctrl.getTruck(req, res, next));
 
-  route.get('', (req, res, next) => ctrl.getAllTrucks(req, res, next));
+  //route.get('', (req, res, next) => ctrl.getAllTrucks(req, res, next));
 };

@@ -2,7 +2,7 @@ pipelines:
   default:
     - parallel:
         - step:
-            name: Build and Test Master Data
+            name: Build and Test .NET
             image: mcr.microsoft.com/dotnet/sdk:5.0
             caches:
               - dotnetcore
@@ -21,13 +21,19 @@ pipelines:
               - npm --prefix ./spa run build
             artifacts:
               - node_modules/ # Save modules for next steps
-        - step:
-            name: Build and Test Feed Master Data
-            image: node:18.0.0
-            caches:
-              - node
-            script:
-              - npm --prefix ./bulletproof-nodejs install
-              - npm --prefix ./bulletproof-nodejs run build
-            artifacts:
-              - node_modules/ # Save modules for next steps
+#        - step:
+#            name: Build and Test NodeJS
+#            image: node:18.0.0
+#            caches:
+#              - node
+#            script:
+#              - npm --prefix ./bulletproof-nodejs install
+#              - npm --prefix ./bulletproof-nodejs run test
+#            artifacts:
+#              - node_modules/ # Save modules for next steps
+    - step:
+        name: Deploy to test
+        deployment: test
+        # trigger: manual  # Uncomment to make this a manual deployment.
+        script:
+          - echo "Deploying to test environment"
