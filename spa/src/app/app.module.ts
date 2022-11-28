@@ -23,6 +23,7 @@ import { CreateRouteComponent } from './create-route/create-route.component';
 import { CreateRoutePlanningComponent } from './create-route-planning/create-route-planning.component';
 import { GetRoutePlanningComponent } from './get-route-planning/get-route-planning.component';
 import { CreateTruckComponent } from './create-truck/create-truck.component';
+import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CreateTruckComponent } from './create-truck/create-truck.component';
     CreateRouteComponent,
     CreateRoutePlanningComponent,
     GetRoutePlanningComponent,
-    CreateTruckComponent
+    CreateTruckComponent,
+    ListWarehousesComponent
   ],
   imports: [
     BrowserModule,
