@@ -23,9 +23,7 @@ import { CreateRouteComponent } from './create-route/create-route.component';
 import { CreateRoutePlanningComponent } from './create-route-planning/create-route-planning.component';
 import { GetRoutePlanningComponent } from './get-route-planning/get-route-planning.component';
 import { CreateTruckComponent } from './create-truck/create-truck.component';
-import { ListWarehousesComponent } from './list-warehouses/list-warehouses.component';
-import {listWarehouseService} from "./list-warehouses/list-warehouse.service";
-import {FormsModule} from "@angular/forms";
+import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
 
 @NgModule({
   declarations: [
@@ -56,12 +54,8 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     MatButtonModule,
     MatButtonModule,
-    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-
-}
+export class AppModule { }
