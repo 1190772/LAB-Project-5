@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-create-warehouse',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateWarehouseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+
+  }
+  onWarehouseCreate(warehouses:{wName:string,wCountry:string,wDoorNumber:string,wLongitude:string,wLatitude:string,wAltitude:string,wDesc:string}) {
+    console.log(warehouses);
+    this.http.post('https://lapr5dummydb-default-rtdb.europe-west1.firebasedatabase.app/warehouses.json',warehouses)
+      .subscribe((res)=>{
+        console.log(res);
+      })
+  }
 }

@@ -1,36 +1,36 @@
 <div class="center">
   <h1>Create Warehouse</h1>
-  <form>
+  <form #warehouseForm="ngForm" (ngSubmit)="onWarehouseCreate(warehouseForm.value)">
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wName" ngModel>
       <span>Street</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wCountry" ngModel>
       <span>Country</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wDoorNumber" ngModel>
       <span>Door Number</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wLongitude" ngModel>
       <span>Longitude</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wLatitude" ngModel>
       <span>Latitude</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wAltitude" ngModel>
       <span>Altitude</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="wDescription" ngModel>
       <span>Description</span>
     </div>
     <div class="inputbox">
-      <input type="button" value="submit">
+      <input type="submit" value="submit">
     </div>
   </form>
 </div>
