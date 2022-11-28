@@ -24,6 +24,7 @@ import { CreateRoutePlanningComponent } from './create-route-planning/create-rou
 import { GetRoutePlanningComponent } from './get-route-planning/get-route-planning.component';
 import { CreateTruckComponent } from './create-truck/create-truck.component';
 import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.compone
     AppRoutingModule,
     MatButtonModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
