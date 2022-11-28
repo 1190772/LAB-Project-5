@@ -1,36 +1,36 @@
 <div class="center">
   <h1>Create Truck</h1>
-  <form>
+  <form #warehouseForm="ngForm" (ngSubmit)="onTruckCreate(warehouseForm.value)">
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tLicencePlate" ngModel>
       <span>License Plate</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tName" ngModel>
       <span>Name</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tTare" ngModel>
       <span>Tare</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tMaximumLoad" ngModel>
       <span>Maximum Load</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tBateryCapacity" ngModel>
       <span>Battery Capacity</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tAutonomy" ngModel>
       <span>Autonomy</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" required="required" name="tChargingTime" ngModel>
       <span>Charging Time</span>
     </div>
     <div class="inputbox">
-      <input type="button" value="submit">
+      <input type="submit" value="submit">
     </div>
   </form>
 </div>
