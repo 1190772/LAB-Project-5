@@ -25,6 +25,7 @@ import { GetRoutePlanningComponent } from './get-route-planning/get-route-planni
 import { CreateTruckComponent } from './create-truck/create-truck.component';
 import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
 import {FormsModule} from "@angular/forms";
+import { RoadNetworkComponent } from './road-network/road-network.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {FormsModule} from "@angular/forms";
     CreateRoutePlanningComponent,
     GetRoutePlanningComponent,
     CreateTruckComponent,
-    ListWarehousesComponent
+    ListWarehousesComponent,
+    RoadNetworkComponent
   ],
   imports: [
     BrowserModule,
