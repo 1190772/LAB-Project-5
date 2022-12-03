@@ -31,13 +31,13 @@ pipelines:
 #              - npm --prefix ./bulletproof-nodejs run test
 #            artifacts:
 #              - node_modules/ # Save modules for next steps
-    - step:
-        name: Deploy to production
-        deployment: production
-        script:
-          - echo "Deploying to production environment"
-          - pipe: atlassian/ssh-run:0.2.2
-            variables:
-              SSH_USER: 'root'
-              SERVER: 'vsgate-ssh.dei.isep.ipp.pt:10616'
-              COMMAND: '~/lei_isep_2022_23_lapr5_22s5_3de_33/deploy.sh'
+#    - step:
+#        name: Deploy to production
+#        deployment: production
+#        script:
+#          - echo "Deploying to production environment"
+#          - pipe: atlassian/ssh-run:0.2.2
+#            variables:
+#              SSH_USER: 'root'
+#              SERVER: 'vsgate-ssh.dei.isep.ipp.pt:10616'
+#              COMMAND: '~/lei_isep_2022_23_lapr5_22s5_3de_33/deploy.sh'

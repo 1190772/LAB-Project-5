@@ -1,6 +1,10 @@
 <div class="center">
   <h1>Create Warehouse</h1>
-  <form #warehouseForm="ngForm" (ngSubmit)="onWarehouseCreate(warehouseForm.value)">
+  <form #warehousesForm="ngForm" (ngSubmit)="onWarehouseCreate(warehousesForm.value)">
+    <div class="inputbox">
+      <input type="text" required="required" name="wWarehouseId" ngModel>
+      <span>Warehouse (ID)</span>
+    </div>
     <div class="inputbox">
       <input type="text" required="required" name="wName" ngModel>
       <span>Street</span>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-
+import {WarehousesService, WarehouseDTO} from "../Service/warehouses.service";
 
 @Component({
   selector: 'app-create-warehouse',
@@ -9,18 +10,20 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CreateWarehouseComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, private warehouseService: WarehousesService) {
   }
 
   ngOnInit(): void {
-
   }
-  onWarehouseCreate(warehouses:{wName:string,wCountry:string,wDoorNumber:string,wLongitude:string,wLatitude:string,wAltitude:string,wDesc:string}) {
-    console.log(warehouses);
-    this.http.post('https://lapr5dummydb-default-rtdb.europe-west1.firebasedatabase.app/warehouses.json',warehouses)
-      .subscribe((res)=>{
-        console.log(res);
-      })
+
+  onWarehouseCreate(warehouses: { wWarehouseID: string, wStreet: string, wCountry: string, wDoorNumber: number, wLongi: number, wLat: number, wAlt: number, wDescription: string }) {
+
+    const obj = {
+      WarehouseID: warehouses.wWarehouseID, street: warehouses.wStreet, country: warehouses.wCountry
+      , doorNumber: warehouses.wDoorNumber, longi: warehouses.wLongi,
+      lat: warehouses.wLat, alt: warehouses.wAlt, Description: warehouses.wDescription
+    } as WarehouseDTO
+
+    this.warehouseService.createWarehouse(obj);
   }
 }
