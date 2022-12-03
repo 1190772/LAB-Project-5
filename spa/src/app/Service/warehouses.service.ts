@@ -22,27 +22,9 @@ export class WarehousesService {
 
   createWarehouse(warehouses: WarehouseDTO) {
     console.log(warehouses);
-    // const headers = new HttpHeaders({'myHeader': 'procademy'});
-    // this.http.post<{ name: string }>(
-    //   'http://localhost:5000/api/delivery',
-    //   deliveries, {headers: headers}).subscribe((res: any) => {
-    //   console.log(res);
-    // });
 
     axios.post(`http://localhost:5000/api/warehouse`, warehouses).then().catch(err => console.error(err.body));
 
-
-  }
-
-  fetchDelivery() {
-
-  }
-
-  deleteDelivery() {
-
-  }
-
-  deleteAllDeliveries() {
 
   }
 
