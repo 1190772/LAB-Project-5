@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DeliveriesService, DeliveryDTO} from "../Service/deliveries.service";
+import {Delivery} from "../Delivery";
 
 @Component({
   selector: 'app-list-warehouses',
@@ -7,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListWarehousesComponent implements OnInit {
 
-
-  constructor() { }
+  constructor(private service : DeliveriesService) { }
 
   ngOnInit(): void {
+    this.service.listDeliveries();
   }
 
 }

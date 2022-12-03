@@ -22,8 +22,8 @@ const routes: Routes = [
   {path: 'create-route-planning', component: CreateRoutePlanningComponent},
   {path: 'get-route-planning', component: GetRoutePlanningComponent},
   {path: 'create-truck', component: CreateTruckComponent},
-  {path: 'list-warehouse',component:ListWarehousesComponent},
-  {path: 'road-network',component:RoadNetworkComponent}
+  {path: 'road-network',component:RoadNetworkComponent},
+  {path: 'list-warehouses',component:ListWarehousesComponent}
 
 
 ];
