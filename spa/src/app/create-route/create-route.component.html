@@ -1,28 +1,28 @@
 <div class="center">
   <h1>Create Route</h1>
-  <form>
+  <form #routesForm="ngForm" (ngSubmit)="onRouteCreate(routesForm.value)">
     <div class="inputbox">
-      <input type="text" required="required">
-      <span>Start Warehouse ID</span>
+      <input type="text" name="rWarehouseStart" required="required" ngModel>
+      <span>Starting Warehouse (ID)</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
-      <span>Destination Warehouse ID</span>
+      <input type="text" name="rWarehouseDestination" required="required" ngModel>
+      <span>Destination Warehouse (ID)</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
-      <span>Time</span>
-    </div>
-    <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="rDistance" required="required" ngModel>
       <span>Distance</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="rTime" required="required" ngModel>
+      <span>Time</span>
+    </div>
+    <div class="inputbox">
+      <input type="text" name="rEnergy" required="required" ngModel>
       <span>Energy</span>
     </div>
     <div class="inputbox">
-      <input type="button" value="submit">
+      <input type="submit" value="submit">
     </div>
   </form>
 </div>
