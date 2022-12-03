@@ -31,13 +31,21 @@ pipelines:
 #              - npm --prefix ./bulletproof-nodejs run test
 #            artifacts:
 #              - node_modules/ # Save modules for next steps
-#    - step:
-#        name: Deploy to production
-#        deployment: production
-#        script:
-#          - echo "Deploying to production environment"
-#          - pipe: atlassian/ssh-run:0.2.2
-#            variables:
-#              SSH_USER: 'root'
-#              SERVER: 'vsgate-ssh.dei.isep.ipp.pt:10616'
-#              COMMAND: '~/lei_isep_2022_23_lapr5_22s5_3de_33/deploy.sh'
+    - step:
+        name: Deploy
+        image: mcr.microsoft.com/dotnet/sdk:6.0
+        deployment: production
+        caches:
+          - dotnetcore
+        script:
+          - cd dddnetcore
+          - dotnet publish -o ./publish
+          - pipe: atlassian/scp-deploy:0.3.3
+            variables:
+              USER: root
+              SERVER: vsgate-ssh.dei.isep.ipp.pt
+              REMOTE_PATH: '/var/www/dddnetcore'
+              LOCAL_PATH: './publish/*'
+              EXTRA_ARGS: '-P 10812'
+          - apt-get update && apt-get -qq install ssh openssh-client
+          - ssh -i ~/.ssh/config root@vsgate-ssh.dei.isep.ipp.pt:10812 sh ./restart_service.sh
