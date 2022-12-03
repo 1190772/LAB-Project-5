@@ -1,28 +1,32 @@
 <div class="center">
   <h1>Create Delivery</h1>
-  <form>
+  <form #deliveriesForm="ngForm" (ngSubmit)="onDeliveryCreate(deliveriesForm.value)">
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="dId" required="required" ngModel>
+      <span>ID</span>
+    </div>
+    <div class="inputbox">
+      <input type="text" name="dDate" required="required" ngModel>
       <span>Date</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="dWeight" required="required" ngModel>
       <span>Weight</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="dWarehouseId" required="required" ngModel>
       <span>Warehouse ID</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="putTime" required="required" ngModel>
       <span>Put Delivery Time</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required">
+      <input type="text" name="takeTime" required="required" ngModel>
       <span>Take Delivery Time</span>
     </div>
     <div class="inputbox">
-      <input type="button" value="submit">
+      <input type="submit" value="submit">
     </div>
   </form>
 </div>

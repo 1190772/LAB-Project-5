@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace DDDSample1
 {
@@ -32,16 +33,19 @@ namespace DDDSample1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DDDSample1DbContext>(opt =>
-                opt.UseInMemoryDatabase("DDDSample1DB")
-                    .ReplaceService<IValueConverterSelector, StronglyEntityIdValueConverterSelector>());
+            //services.AddDbContext<DDDSample1DbContext>(opt =>
+            //    opt.UseInMemoryDatabase("DDDSample1DB")
+            //        .ReplaceService<IValueConverterSelector, StronglyEntityIdValueConverterSelector>());
 
-            // services.AddDbContext<DDDSample1DbContext>(opt =>
-            // opt.UseSqlServer(Configuration.GetConnectionString("sqlserver"))
-            //     .ReplaceService<IValueConverterSelector, StronglyEntityIdValueConverterSelector>());
+             services.AddDbContext<DDDSample1DbContext>(opt =>
+             opt.UseSqlServer(Configuration.GetConnectionString("sqlserver"))
+                 .ReplaceService<IValueConverterSelector, StronglyEntityIdValueConverterSelector>());
 
             ConfigureMyServices(services);
 
+            services.AddCors(options => options.AddDefaultPolicy(
+                            builder=> builder.AllowAnyOrigin()
+            ));
 
             services.AddControllers().AddNewtonsoftJson();
         }
@@ -52,24 +56,57 @@ namespace DDDSample1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors();
             }
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                app.UseCors();
             }
-
+            app.UseCors();
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseRouting();
 
+
+
+
+
+
+
+
+            app.UseCors();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseCors();
+            
+            
+           
         }
 
         public void ConfigureMyServices(IServiceCollection services)
         {
+
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();

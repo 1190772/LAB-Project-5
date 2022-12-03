@@ -26,6 +26,7 @@ import { CreateTruckComponent } from './create-truck/create-truck.component';
 import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
 import {FormsModule} from "@angular/forms";
 import { RoadNetworkComponent } from './road-network/road-network.component';
+import {DeliveriesService} from "./Service/deliveries.service";
 
 @NgModule({
   declarations: [
