@@ -1,51 +1,44 @@
 pipelines:
-  default:
-    - parallel:
-        - step:
-            name: Build and Test .NET
-            image: mcr.microsoft.com/dotnet/sdk:5.0
-            caches:
-              - dotnetcore
-            script:
-              - export PROJECT_MD=dddnetcore
-              - dotnet restore ./dddnetcore
-              - dotnet build $PROJECT_MD
-        - step:
-            name: Build and Test SPA
-            image: node:18.0.0
-            caches:
-              - node
-            script:
-              - npm --prefix ./spa install
-              - npm --prefix ./spa install @angular/cli -g
-              - npm --prefix ./spa run build
-            artifacts:
-              - node_modules/ # Save modules for next steps
-#        - step:
-#            name: Build and Test NodeJS
-#            image: node:18.0.0
-#            caches:
-#              - node
-#            script:
-#              - npm --prefix ./bulletproof-nodejs install
-#              - npm --prefix ./bulletproof-nodejs run test
-#            artifacts:
-#              - node_modules/ # Save modules for next steps
-    - step:
-        name: Deploy
-        image: mcr.microsoft.com/dotnet/sdk:6.0
-        deployment: production
-        caches:
-          - dotnetcore
-        script:
-          - cd dddnetcore
-          - dotnet publish -o ./publish
-          - pipe: atlassian/scp-deploy:0.3.3
-            variables:
-              USER: root
-              SERVER: vsgate-ssh.dei.isep.ipp.pt
-              REMOTE_PATH: '/var/www/dddnetcore'
-              LOCAL_PATH: './publish/*'
-              EXTRA_ARGS: '-P 10812'
-          - apt-get update && apt-get -qq install ssh openssh-client
-          - ssh -i ~/.ssh/config root@vsgate-ssh.dei.isep.ipp.pt:10812 sh ./restart_service.sh
+  custom:
+    build:
+      - parallel:
+          - step:
+              name: Build and Test .NET
+              image: mcr.microsoft.com/dotnet/sdk:5.0
+              caches:
+                - dotnetcore
+              script:
+                - export PROJECT_MD=dddnetcore
+                - dotnet restore ./dddnetcore
+                - dotnet build $PROJECT_MD
+          - step:
+              name: Build and Test SPA
+              image: node:18.0.0
+              caches:
+                - node
+              script:
+                - npm --prefix ./spa install
+                - npm --prefix ./spa install @angular/cli -g
+                - npm --prefix ./spa run build
+              artifacts:
+                - node_modules/ # Save modules for next steps
+
+    deploy:
+      - step:
+          name: Deploy
+          image: mcr.microsoft.com/dotnet/sdk:6.0
+          deployment: production
+          caches:
+            - dotnetcore
+          script:
+            - cd dddnetcore
+            - dotnet publish -o ./publish
+            - pipe: atlassian/scp-deploy:0.3.3
+              variables:
+                USER: lapr
+                SERVER: vsgate-ssh.dei.isep.ipp.pt
+                REMOTE_PATH: '/var/www/dddnetcore'
+                LOCAL_PATH: './publish/*'
+                EXTRA_ARGS: '-P 10812'
+            - apt-get update && apt-get -qq install ssh openssh-client
+            - ssh -i ~/.ssh/config lapr@vsgate-ssh.dei.isep.ipp.pt:10812 sh /home/lapr/restart_service.sh
