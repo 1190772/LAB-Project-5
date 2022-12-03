@@ -41,4 +41,4 @@ pipelines:
                 LOCAL_PATH: './publish/*'
                 EXTRA_ARGS: '-P 10812'
             - apt-get update && apt-get -qq install ssh openssh-client
-            - ssh -i ~/.ssh/config lapr@vsgate-ssh.dei.isep.ipp.pt:10812 sh /home/lapr/restart_service.sh
+            - ssh -i ~/.ssh/config lapr@vsgate-ssh.dei.isep.ipp.pt -p 10812 sh /home/lapr/restart_service.sh
