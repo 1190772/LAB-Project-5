@@ -23,7 +23,7 @@ import { CreateRouteComponent } from './create-route/create-route.component';
 import { CreateRoutePlanningComponent } from './create-route-planning/create-route-planning.component';
 import { GetRoutePlanningComponent } from './get-route-planning/get-route-planning.component';
 import { CreateTruckComponent } from './create-truck/create-truck.component';
-import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
+import {ListDeliveriesComponent} from "./list-deliveries/list-deliveries.component";
 import {FormsModule} from "@angular/forms";
 import { RoadNetworkComponent } from './road-network/road-network.component';
 import {DeliveriesService} from "./Service/deliveries.service";
@@ -49,7 +49,7 @@ import {DeliveriesService} from "./Service/deliveries.service";
     CreateRoutePlanningComponent,
     GetRoutePlanningComponent,
     CreateTruckComponent,
-    ListWarehousesComponent,
+    ListDeliveriesComponent,
     RoadNetworkComponent
   ],
   imports: [

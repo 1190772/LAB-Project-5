@@ -3,11 +3,11 @@ import {DeliveriesService, DeliveryDTO} from "../Service/deliveries.service";
 import {Delivery} from "../Delivery";
 
 @Component({
-  selector: 'app-list-warehouses',
-  templateUrl: './list-warehouses.component.html',
-  styleUrls: ['./list-warehouses.component.css']
+  selector: 'app-list-deliveries',
+  templateUrl: './list-deliveries.component.html',
+  styleUrls: ['./list-deliveries.component.css']
 })
-export class ListWarehousesComponent implements OnInit {
+export class ListDeliveriesComponent implements OnInit {
 
   constructor(private service : DeliveriesService) { }
 
