@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import axios, {isCancel, AxiosError} from 'axios';
+import {map, Observable} from "rxjs";
 
 export interface RouteDTO {
   idWarehouseStart: string,
@@ -19,28 +20,47 @@ export class RoutesService {
 
   createRoute(routes: RouteDTO) {
     console.log(routes);
-    // const headers = new HttpHeaders({'myHeader': 'procademy'});
-    // this.http.post<{ name: string }>(
-    //   'http://localhost:3000/api/routes',
-    //   routes, {headers: headers}).subscribe((res: any) => {
-    //   console.log(res);
-    // });
+
 
     axios.post(`http://localhost:3000/api/routes`, routes).then().catch(err => console.error(err.body));
 
 
   }
 
-  fetchRoute() {
-
+  public extractData(res: any) {
+    return res || {};
   }
 
-  deleteRoute() {
-
+  getRoutes(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/routes').pipe(map(this.extractData));
   }
 
-  deleteAllRoutes() {
+  listRoutes(): void {
+    let tbody = document.getElementById('tbody') as HTMLTableElement;
+    let array = this.getRoutes();
 
+    array.forEach(function (i) {
+      for (let j = 0; j < i.length; j++) {
+        let tr = tbody.insertRow();
+
+        let td_id= tr.insertCell();
+        let td_idWarehouseStart = tr.insertCell();
+        let td_idWarehouseDestination = tr.insertCell();
+        let td_distance = tr.insertCell();
+        let td_time = tr.insertCell();
+        let td_energy = tr.insertCell();
+
+        td_id.innerText = i[j].id;
+        td_idWarehouseStart.innerText = i[j].idWarehouseStart;
+        td_idWarehouseDestination.innerText = i[j].idWarehouseDestination;
+        td_distance.innerText = i[j].distance;
+        td_time.innerText = i[j].time;
+        td_energy.innerText = i[j].energy;
+
+      }
+    });
   }
+
+
 
 }

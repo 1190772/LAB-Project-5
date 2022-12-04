@@ -14,4 +14,6 @@ export class ListTrucksComponent implements OnInit {
     this.service.listTrucks();
   }
 
+
+
 }
