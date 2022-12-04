@@ -12,6 +12,7 @@ import {CreateTruckComponent} from "./create-truck/create-truck.component";
 
 import {RoadNetworkComponent} from "./road-network/road-network.component";
 import {ListDeliveriesComponent} from "./list-deliveries/list-deliveries.component";
+import {ListTrucksComponent} from "./list-trucks/list-trucks.component";
 
 const routes: Routes = [
   {path: 'warehouse-manager', component: WarehouseManagerComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'get-route-planning', component: GetRoutePlanningComponent},
   {path: 'create-truck', component: CreateTruckComponent},
   {path: 'road-network',component:RoadNetworkComponent},
-  {path: 'list-deliveries',component:ListDeliveriesComponent}
+  {path: 'list-deliveries',component:ListDeliveriesComponent},
+  {path: 'list-trucks',component:ListTrucksComponent}
 
 
 ];

@@ -8,14 +8,11 @@ import {TruckMap} from "../mappers/TruckMap";
 import { Document, FilterQuery, Model } from 'mongoose';
 import {ITruckPersistence} from "../dataschema/ITruckPersistence";
 
-
 @Service()
 export default class TruckRepo implements ITruckRepo {
   private models: any;
 
-  constructor(
-    @Inject('truckSchema') private truckSchema : Model<ITruckPersistence & Document>,
-  ) {}
+  constructor(@Inject('truckSchema') private truckSchema : Model<ITruckPersistence & Document>,) {}
 
   private createBaseQuery (): any {
     return {
@@ -46,7 +43,12 @@ export default class TruckRepo implements ITruckRepo {
 
         return TruckMap.toDomain(truckCreated);
       } else {
-        truckDocument.name = truck.name;
+        truckDocument.licensePlate = truck.licensePlate;
+        truckDocument.tare = truck.tare;
+        truckDocument.maximumLoad = truck.maximumLoad;
+        truckDocument.batteryCapacity = truck.batteryCapacity;
+        truckDocument.autonomy = truck.autonomy;
+        truckDocument.chargingTime = truck.chargingTime;
         await truckDocument.save();
 
         return truck;
@@ -63,7 +65,15 @@ export default class TruckRepo implements ITruckRepo {
     if( truckRecord != null) {
       return TruckMap.toDomain(truckRecord);
     }
-    else
-      return null;
+    else return null;
+  }
+
+  public async findAll(): Promise<Truck[]> {
+    const trucks = await this.truckSchema.find();
+    const rs = [];
+    for (let i = 0; i < trucks.length; i++) {
+      rs.push(TruckMap.toDomain(trucks[i]));
+    }
+    return rs;
   }
 }

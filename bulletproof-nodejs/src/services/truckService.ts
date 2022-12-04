@@ -26,6 +26,19 @@ export default class TruckService implements ITruckService {
     }
   }
 
+  public async getAllTrucks(): Promise<Result<ITruckDTO[]>> {
+    try {
+      const trucks = await this.truckRepo.findAll();
+      const dtos = [];
+      for (let i = 0; i < trucks.length; i++) {
+        dtos.push(TruckMap.toDTO(trucks[i]));
+      }
+      return Result.ok(dtos);
+    } catch (e) {
+      throw e;
+    }
+  }
+
   public async createTruck(truckDTO: ITruckDTO): Promise<Result<ITruckDTO>> {
     try {
       const truckOrError = await Truck.create(truckDTO);
@@ -52,7 +65,12 @@ export default class TruckService implements ITruckService {
       if (truck === null) {
         return Result.fail<ITruckDTO>('Truck not found');
       } else {
-        truck.name = truckDTO.name;
+        truck.licensePlate = truckDTO.licensePlate;
+        truck.tare = truckDTO.tare;
+        truck.maximumLoad = truckDTO.maximumLoad;
+        truck.batteryCapacity = truckDTO.batteryCapacity;
+        truck.autonomy = truckDTO.autonomy;
+        truck.chargingTime = truckDTO.chargingTime;
         await this.truckRepo.save(truck);
 
         const truckDTOResult = TruckMap.toDTO(truck) as ITruckDTO;

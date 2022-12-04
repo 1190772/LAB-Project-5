@@ -6,7 +6,9 @@ export default interface ITruckRepo extends Repo<Truck> {
   save(truck: Truck): Promise<Truck>;
   findByDomainId (TruckId: TruckId | string): Promise<Truck>;
 
-  //findByIds (rolesIds: RoleId[]): Promise<Role[]>;
-  //saveCollection (roles: Role[]): Promise<Role[]>;
-  //removeByRoleIds (roles: RoleId[]): Promise<any>
+  findAll(): Promise<Truck[]>;
+
+  //findByIds (trucksIds: TruckId[]): Promise<Truck[]>;
+  //saveCollection (trucks: Truck[]): Promise<Truck[]>;
+  //removeByRoleIds (trucks: TruckId[]): Promise<any>
 }

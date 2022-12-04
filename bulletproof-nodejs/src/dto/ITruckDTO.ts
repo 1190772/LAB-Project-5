@@ -1,8 +1,6 @@
-
 export default interface ITruckDTO {
-
   id: string;
-  name: string;
+  licensePlate: string;
   tare: number;
   maximumLoad: number;
   batteryCapacity: number;

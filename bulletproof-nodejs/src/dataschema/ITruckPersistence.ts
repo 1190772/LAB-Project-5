@@ -1,4 +1,9 @@
 export interface ITruckPersistence {
   domainId: string;
-  name: string;
+  licensePlate: string,
+  tare: number;
+  maximumLoad: number;
+  batteryCapacity: number;
+  autonomy: number;
+  chargingTime: number;
 }
