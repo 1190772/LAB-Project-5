@@ -32,7 +32,7 @@ pipelines:
             - dotnetcore
           script:
             - cd dddnetcore
-            - dotnet publish -o ./publish
+            - dotnet publish -o ./publish --configuration Release
             - pipe: atlassian/scp-deploy:0.3.3
               variables:
                 USER: lapr
