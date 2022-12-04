@@ -26,7 +26,7 @@ import { CreateTruckComponent } from './create-truck/create-truck.component';
 import {ListDeliveriesComponent} from "./list-deliveries/list-deliveries.component";
 import {FormsModule} from "@angular/forms";
 import { RoadNetworkComponent } from './road-network/road-network.component';
-import {DeliveriesService} from "./Service/deliveries.service";
+import {ListTrucksComponents} from "./list-trucks/list-trucks.components";
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import {DeliveriesService} from "./Service/deliveries.service";
     GetRoutePlanningComponent,
     CreateTruckComponent,
     ListDeliveriesComponent,
-    RoadNetworkComponent
+    RoadNetworkComponent,
+    ListTrucksComponents
   ],
   imports: [
     BrowserModule,

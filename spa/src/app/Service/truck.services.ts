@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import axios from "axios/index";
+import {map, Observable} from "rxjs";
 
 export interface TruckDTO {
   idTruck: string,
@@ -29,4 +30,39 @@ export class TruckService {
 
 
   }
+
+  public extractData(res: any) {
+    return res || {};
+  }
+
+  getTrucks(): Observable<any> {
+    return this.http.get('http://localhost:5000/api/truck').pipe(map(this.extractData));
+  }
+
+  listTrucks(): void {
+    let tbody = document.getElementById('tbody') as HTMLTableElement;
+    let array = this.getTrucks();
+
+    array.forEach(function (i) {
+      for (let j = 0; j < i.length; j++) {
+        let tr = tbody.insertRow();
+
+        let td_id = tr.insertCell();
+        let td_tare = tr.insertCell();
+        let td_maximum_load = tr.insertCell();
+        let td_batery_capacity = tr.insertCell();
+        let td_autonomy = tr.insertCell();
+        let td_charging_time = tr.insertCell();
+
+        td_id.innerText = i[j].deliveryId;
+        td_tare.innerText = i[j].deliveryDate;
+        td_maximum_load.innerText = i[j].weight;
+        td_batery_capacity.innerText = i[j].warehouseId;
+        td_autonomy.innerText = i[j].putDeliveryTime;
+        td_charging_time.innerText = i[j].takeDeliveryTime;
+
+      }
+    });
+  }
+
 }
