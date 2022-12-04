@@ -4,6 +4,7 @@ import axios from "axios";
 import {map, Observable} from "rxjs";
 
 export interface TruckDTO {
+  licensePlate:string,
   tare:number,
   maximumLoad:number,
   batteryCapacity:number,
@@ -46,19 +47,19 @@ export class TruckService {
       for (let j = 0; j < i.length; j++) {
         let tr = tbody.insertRow();
 
-        let td_id = tr.insertCell();
+        let td_licensePlate = tr.insertCell();
         let td_tare = tr.insertCell();
         let td_maximum_load = tr.insertCell();
-        let td_batery_capacity = tr.insertCell();
+        let td_battery_capacity = tr.insertCell();
         let td_autonomy = tr.insertCell();
         let td_charging_time = tr.insertCell();
 
-        td_id.innerText = i[j].deliveryId;
-        td_tare.innerText = i[j].deliveryDate;
-        td_maximum_load.innerText = i[j].weight;
-        td_batery_capacity.innerText = i[j].warehouseId;
-        td_autonomy.innerText = i[j].putDeliveryTime;
-        td_charging_time.innerText = i[j].takeDeliveryTime;
+        td_licensePlate.innerText = i[j].licensePlate;
+        td_tare.innerText = i[j].tare;
+        td_maximum_load.innerText = i[j].maximumLoad;
+        td_battery_capacity.innerText = i[j].batteryCapacity;
+        td_autonomy.innerText = i[j].autonomy;
+        td_charging_time.innerText = i[j].chargingTime;
 
       }
     });

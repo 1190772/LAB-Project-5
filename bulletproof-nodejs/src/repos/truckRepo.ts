@@ -43,6 +43,7 @@ export default class TruckRepo implements ITruckRepo {
 
         return TruckMap.toDomain(truckCreated);
       } else {
+        truckDocument.licensePlate = truck.licensePlate;
         truckDocument.tare = truck.tare;
         truckDocument.maximumLoad = truck.maximumLoad;
         truckDocument.batteryCapacity = truck.batteryCapacity;

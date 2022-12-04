@@ -17,6 +17,7 @@ export default (app: Router) => {
     '',
     celebrate({
       body: Joi.object({
+        licensePlate: Joi.string().required(),
         tare: Joi.number().required(),
         maximumLoad: Joi.number().required(),
         batteryCapacity: Joi.number().required(),

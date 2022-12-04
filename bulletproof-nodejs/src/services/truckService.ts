@@ -65,6 +65,7 @@ export default class TruckService implements ITruckService {
       if (truck === null) {
         return Result.fail<ITruckDTO>('Truck not found');
       } else {
+        truck.licensePlate = truckDTO.licensePlate;
         truck.tare = truckDTO.tare;
         truck.maximumLoad = truckDTO.maximumLoad;
         truck.batteryCapacity = truckDTO.batteryCapacity;

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 const TruckSchema = new mongoose.Schema(
   {
     domainId: { type: String, unique: true },
+    licensePlate: { type: String },
     tare: { type: Number },
     maximumLoad: { type: Number },
     batteryCapacity: { type: Number },

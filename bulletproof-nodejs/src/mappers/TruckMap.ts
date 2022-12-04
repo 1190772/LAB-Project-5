@@ -13,6 +13,7 @@ export class TruckMap extends Mapper<Truck> {
   public static toDTO( truck: Truck): ITruckDTO {
     return {
       id: truck.id.toString(),
+      licensePlate: truck.licensePlate.toString(),
       tare: truck.tare,
       maximumLoad: truck.maximumLoad,
       batteryCapacity: truck.batteryCapacity,
@@ -32,6 +33,7 @@ export class TruckMap extends Mapper<Truck> {
   public static toPersistence (truck: Truck): any {
     return {
       domainId: truck.id.toString(),
+      licensePlate: truck.licensePlate.toString(),
       tare: truck.tare,
       maximumLoad: truck.maximumLoad,
       batteryCapacity: truck.batteryCapacity,

@@ -2,6 +2,10 @@
   <h1>Create Truck</h1>
   <form #truckForm="ngForm" (ngSubmit)="onTruckCreate(truckForm.value)">
     <div class="inputbox">
+      <input type="text" required="required" name="tLicensePlate" ngModel>
+      <span>License Plate</span>
+    </div>
+    <div class="inputbox">
       <input type="text" required="required" name="tTare" ngModel>
       <span>Tare</span>
     </div>
