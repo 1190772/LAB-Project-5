@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {TruckDTO, TruckService} from "../Service/truck.services";
 
 @Component({
   selector: 'app-create-truck',
@@ -8,16 +9,17 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CreateTruckComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private truckService: TruckService) { }
 
   ngOnInit(): void {
   }
-  onTruckCreate(trucks:{tLicencePlate:string,tName:string,tTare:string,tMaximumLoad:string,tBateryCapacity:string,tAutonomy:string,tChargingTime:string}) {
-    console.log(trucks);
-    this.http.post('https://lapr5dummydb-default-rtdb.europe-west1.firebasedatabase.app/trucks.json',trucks)
-      .subscribe((res)=>{
-        console.log(res);
-      })
+  onTruckCreate(trucks:{idTruck: string,tTare:string,tMaximumLoad:string,tBateryCapacity:string,tAutonomy:string,tChargingTime:string}) {
+    const obj={
+      idTruck: trucks.idTruck, tTare:trucks.tTare,tMaximumLoad:trucks.tMaximumLoad,tBateryCapacity:trucks.tBateryCapacity,
+      tAutonomy:trucks.tAutonomy,tChargingTime:trucks.tChargingTime
+    }as TruckDTO
+
+    this.truckService.createRoute(obj);
   }
 
 }
