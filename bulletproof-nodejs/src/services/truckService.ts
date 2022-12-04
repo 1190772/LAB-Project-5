@@ -6,8 +6,6 @@ import ITruckRepo from './IRepos/ITruckRepo';
 import ITruckService from './IServices/ITruckService';
 import { Result } from '../core/logic/Result';
 import { TruckMap } from '../mappers/TruckMap';
-import IRouteDTO from "../dto/IRouteDTO";
-import {RouteMap} from "../mappers/RouteMap";
 
 @Service()
 export default class TruckService implements ITruckService {

@@ -46,7 +46,7 @@ export default class TruckController implements ITruckController {
     try {
       const truckOrError = (await this.truckServiceInstance.getTruck(req.params.id)) as Result<ITruckDTO>;
       const truckDTO = truckOrError.getValue();
-      return res.status(201).json(truckDTO);
+      return res.status(200).json(truckDTO);
     } catch (e) {
       return next(e);
     }

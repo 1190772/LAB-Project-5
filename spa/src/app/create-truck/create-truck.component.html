@@ -1,14 +1,6 @@
 <div class="center">
   <h1>Create Truck</h1>
-  <form #warehouseForm="ngForm" (ngSubmit)="onTruckCreate(warehouseForm.value)">
-    <div class="inputbox">
-      <input type="text" required="required" name="tLicencePlate" ngModel>
-      <span>License Plate</span>
-    </div>
-    <div class="inputbox">
-      <input type="text" required="required" name="tName" ngModel>
-      <span>Name</span>
-    </div>
+  <form #truckForm="ngForm" (ngSubmit)="onTruckCreate(truckForm.value)">
     <div class="inputbox">
       <input type="text" required="required" name="tTare" ngModel>
       <span>Tare</span>
@@ -18,7 +10,7 @@
       <span>Maximum Load</span>
     </div>
     <div class="inputbox">
-      <input type="text" required="required" name="tBateryCapacity" ngModel>
+      <input type="text" required="required" name="tBatteryCapacity" ngModel>
       <span>Battery Capacity</span>
     </div>
     <div class="inputbox">

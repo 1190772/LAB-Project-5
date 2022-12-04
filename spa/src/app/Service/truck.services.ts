@@ -1,15 +1,14 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import axios from "axios/index";
+import axios from "axios";
 import {map, Observable} from "rxjs";
 
 export interface TruckDTO {
-  idTruck: string,
-  tTare:string,
-  tMaximumLoad:string,
-  tBateryCapacity:string,
-  tAutonomy:string,
-  tChargingTime:string
+  tare:number,
+  maximumLoad:number,
+  batteryCapacity:number,
+  autonomy:number,
+  chargingTime:number
 }
 @Injectable({providedIn: "root"})
 export class TruckService {
@@ -17,16 +16,16 @@ export class TruckService {
 
   }
 
-  createRoute(routes: TruckDTO) {
-    console.log(routes);
+  createTruck(trucks: TruckDTO) {
+    console.log(trucks);
     // const headers = new HttpHeaders({'myHeader': 'procademy'});
     // this.http.post<{ name: string }>(
-    //   'http://localhost:3000/api/routes',
+    //   'http://localhost:3000/api/trucks',
     //   routes, {headers: headers}).subscribe((res: any) => {
     //   console.log(res);
     // });
 
-    axios.post(`http://localhost:3000/api/routes`, routes).then().catch(err => console.error(err.body));
+    axios.post(`http://localhost:3000/api/trucks`, trucks).then().catch(err => console.error(err.body));
 
 
   }
@@ -36,7 +35,7 @@ export class TruckService {
   }
 
   getTrucks(): Observable<any> {
-    return this.http.get('http://localhost:5000/api/truck').pipe(map(this.extractData));
+    return this.http.get('http://localhost:3000/api/trucks').pipe(map(this.extractData));
   }
 
   listTrucks(): void {
