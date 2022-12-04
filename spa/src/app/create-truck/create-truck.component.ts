@@ -13,13 +13,13 @@ export class CreateTruckComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onTruckCreate(trucks:{idTruck: string,tTare:string,tMaximumLoad:string,tBateryCapacity:string,tAutonomy:string,tChargingTime:string}) {
+  onTruckCreate(trucks:{tLicensePlate: string, tTare:number, tMaximumLoad:number, tBatteryCapacity:number, tAutonomy:number, tChargingTime:number}) {
     const obj={
-      idTruck: trucks.idTruck, tTare:trucks.tTare,tMaximumLoad:trucks.tMaximumLoad,tBateryCapacity:trucks.tBateryCapacity,
-      tAutonomy:trucks.tAutonomy,tChargingTime:trucks.tChargingTime
+      licensePlate:trucks.tLicensePlate,tare:trucks.tTare,maximumLoad:trucks.tMaximumLoad,batteryCapacity:trucks.tBatteryCapacity,
+      autonomy:trucks.tAutonomy,chargingTime:trucks.tChargingTime
     }as TruckDTO
 
-    this.truckService.createRoute(obj);
+    this.truckService.createTruck(obj);
   }
 
 }

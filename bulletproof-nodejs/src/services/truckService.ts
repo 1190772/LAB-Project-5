@@ -6,8 +6,6 @@ import ITruckRepo from './IRepos/ITruckRepo';
 import ITruckService from './IServices/ITruckService';
 import { Result } from '../core/logic/Result';
 import { TruckMap } from '../mappers/TruckMap';
-import IRouteDTO from "../dto/IRouteDTO";
-import {RouteMap} from "../mappers/RouteMap";
 
 @Service()
 export default class TruckService implements ITruckService {
@@ -67,6 +65,7 @@ export default class TruckService implements ITruckService {
       if (truck === null) {
         return Result.fail<ITruckDTO>('Truck not found');
       } else {
+        truck.licensePlate = truckDTO.licensePlate;
         truck.tare = truckDTO.tare;
         truck.maximumLoad = truckDTO.maximumLoad;
         truck.batteryCapacity = truckDTO.batteryCapacity;

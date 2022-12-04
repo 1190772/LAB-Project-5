@@ -1,15 +1,15 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import axios from "axios/index";
+import axios from "axios";
 import {map, Observable} from "rxjs";
 
 export interface TruckDTO {
-  idTruck: string,
-  tTare:string,
-  tMaximumLoad:string,
-  tBateryCapacity:string,
-  tAutonomy:string,
-  tChargingTime:string
+  licensePlate:string,
+  tare:number,
+  maximumLoad:number,
+  batteryCapacity:number,
+  autonomy:number,
+  chargingTime:number
 }
 @Injectable({providedIn: "root"})
 export class TruckService {
@@ -17,16 +17,16 @@ export class TruckService {
 
   }
 
-  createRoute(routes: TruckDTO) {
-    console.log(routes);
+  createTruck(trucks: TruckDTO) {
+    console.log(trucks);
     // const headers = new HttpHeaders({'myHeader': 'procademy'});
     // this.http.post<{ name: string }>(
-    //   'http://localhost:3000/api/routes',
+    //   'http://localhost:3000/api/trucks',
     //   routes, {headers: headers}).subscribe((res: any) => {
     //   console.log(res);
     // });
 
-    axios.post(`http://localhost:3000/api/routes`, routes).then().catch(err => console.error(err.body));
+    axios.post(`http://localhost:3000/api/trucks`, trucks).then().catch(err => console.error(err.body));
 
 
   }
@@ -36,7 +36,7 @@ export class TruckService {
   }
 
   getTrucks(): Observable<any> {
-    return this.http.get('http://localhost:5000/api/truck').pipe(map(this.extractData));
+    return this.http.get('http://localhost:3000/api/trucks').pipe(map(this.extractData));
   }
 
   listTrucks(): void {
@@ -47,19 +47,19 @@ export class TruckService {
       for (let j = 0; j < i.length; j++) {
         let tr = tbody.insertRow();
 
-        let td_id = tr.insertCell();
+        let td_licensePlate = tr.insertCell();
         let td_tare = tr.insertCell();
         let td_maximum_load = tr.insertCell();
-        let td_batery_capacity = tr.insertCell();
+        let td_battery_capacity = tr.insertCell();
         let td_autonomy = tr.insertCell();
         let td_charging_time = tr.insertCell();
 
-        td_id.innerText = i[j].deliveryId;
-        td_tare.innerText = i[j].deliveryDate;
-        td_maximum_load.innerText = i[j].weight;
-        td_batery_capacity.innerText = i[j].warehouseId;
-        td_autonomy.innerText = i[j].putDeliveryTime;
-        td_charging_time.innerText = i[j].takeDeliveryTime;
+        td_licensePlate.innerText = i[j].licensePlate;
+        td_tare.innerText = i[j].tare;
+        td_maximum_load.innerText = i[j].maximumLoad;
+        td_battery_capacity.innerText = i[j].batteryCapacity;
+        td_autonomy.innerText = i[j].autonomy;
+        td_charging_time.innerText = i[j].chargingTime;
 
       }
     });
