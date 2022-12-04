@@ -17,7 +17,6 @@ export default (app: Router) => {
     '',
     celebrate({
       body: Joi.object({
-        name: Joi.string().required(),
         tare: Joi.number().required(),
         maximumLoad: Joi.number().required(),
         batteryCapacity: Joi.number().required(),
@@ -33,7 +32,6 @@ export default (app: Router) => {
     celebrate({
       body: Joi.object({
         id: Joi.string().required(),
-        name: Joi.string().required(),
         tare: Joi.number().required(),
         maximumLoad: Joi.number().required(),
         batteryCapacity: Joi.number().required(),
@@ -46,5 +44,5 @@ export default (app: Router) => {
 
   route.get('/:id', (req, res, next) => ctrl.getTruck(req, res, next));
 
-  //route.get('', (req, res, next) => ctrl.getAllTrucks(req, res, next));
+  route.get('', (req, res, next) => ctrl.getAllTrucks(req, res, next));
 };
