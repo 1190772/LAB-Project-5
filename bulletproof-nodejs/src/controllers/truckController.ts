@@ -17,11 +17,11 @@ export default class TruckController implements ITruckController {
       const truckOrError = (await this.truckServiceInstance.createTruck(req.body as ITruckDTO)) as Result<ITruckDTO>;
 
       if (truckOrError.isFailure) {
-        return res.status(402).send();
+        return res.status(400).send();
       }
 
       const truckDTO = truckOrError.getValue();
-      return res.json(truckDTO).status(201);
+      return res.status(201).json(truckDTO);
     } catch (e) {
       return next(e);
     }
@@ -44,9 +44,19 @@ export default class TruckController implements ITruckController {
 
   public async getTruck(req: Request, res: Response, next: NextFunction) {
     try {
-      const truckOrError = (await this.truckServiceInstance.getTruck((req.body as ITruckDTO).id)) as Result<ITruckDTO>;
+      const truckOrError = (await this.truckServiceInstance.getTruck(req.params.id)) as Result<ITruckDTO>;
       const truckDTO = truckOrError.getValue();
       return res.status(201).json(truckDTO);
+    } catch (e) {
+      return next(e);
+    }
+  }
+
+  public async getAllTrucks(req: Request, res: Response, next: NextFunction) {
+    try {
+      const truckOrError = (await this.truckServiceInstance.getAllTrucks()) as Result<ITruckDTO[]>;
+      const truckDTO = truckOrError.getValue();
+      return res.status(200).json(truckDTO);
     } catch (e) {
       return next(e);
     }
