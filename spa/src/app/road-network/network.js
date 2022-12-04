@@ -26,30 +26,23 @@ scene.add(axesHelper)
 
 let gData = {
     nodes: [
-        {"id": 1, "name": "Arouca", "lat": -50.0000, "lon": -42.6618, "alt": 15.6250, "links": [6, 13]},                          // 0
-        {"id": 2, "name": "Espinho", "lat": 26.6951, "lon": -36.7615, "alt": 34.3750, "links": [4, 9, 16]},                      // 1
-        {"id": 3, "name": "Gondomar", "lat": 50.0000, "lon": 50.0000, "alt": 12.5000, "links": [3, 8, 10, 12]},                 // 2
-        {"id": 4, "name": "Maia", "lat": 22.8206, "lon": -19.4217, "alt": 43.7500, "links": [4, 7, 12, 15, 16]},                 // 3
-        {"id": 5, "name": "Matosinhos", "lat": 37.4080, "lon": -22.8394, "alt": 21.8750, "links": [15]},                         // 4
-        {"id": 6, "name": "Oliveira de Azeméis", "lat": -5.0756, "lon": -50.0000, "alt": 46.8750, "links": [9, 11, 13]},         // 5
-        {"id": 7, "name": "Paredes", "lat": -33.4754, "lon": -21.2052, "alt": 0.0000, "links": [10, 13, 14]},                      // 6
-        {"id": 8, "name": "Porto", "lat": 24.3898, "lon": -24.9214, "alt": 37.5000, "links": [16]},                              // 7
-        {"id": 9, "name": "Póvoa de Varzim", "lat": 49.9225, "lon": -7.4403, "alt": 25.0000, "links": [15]},                    // 8
-        {
-            "id": 10,
-            "name": "Santa Maria da Feira",
-            "lat": 8.7369,
-            "lon": -43.0783,
-            "alt": 6.2500,
-            "links": [11, 12, 14, 16]
-        },  // 9
-        {"id": 11, "name": "Santo Tirso", "lat": -5.6955, "lon": -10.3708, "alt": 40.6250, "links": [12, 14]},                   // 10
-        {"id": 12, "name": "São João da Madeira", "lat": -2.4215, "lon": -45.1446, "alt": 18.7500, "links": [13, 14]},           // 11
-        {"id": 13, "name": "Trofa", "lat": 11.0035, "lon": -10.6851, "alt": 28.1250, "links": [14]},                             // 12
-        {"id": 14, "name": "Vale de Cambra", "lat": -20.8446, "lon": -49.6622, "alt": 3.1250, "links": []},                       // 13
-        {"id": 15, "name": "Valongo", "lat": -0.9492, "lon": -22.5016, "alt": 50.0000, "links": []},                             // 14
-        {"id": 16, "name": "Vila do Conde", "lat": 47.4041, "lon": -9.6952, "alt": 9.3750, "links": []},                       // 15
-        {"id": 17, "name": "Vila Nova de Gaia", "lat": 21.0384, "lon": -27.5927, "alt": 31.2500, "links": []}
+        {"id": 1, "name": "Arouca", "lat": -50.0000, "lon": -42.6618, "alt": 15.6250},
+        {"id": 2, "name": "Espinho", "lat": 26.6951, "lon": -36.7615, "alt": 34.3750},
+        {"id": 3, "name": "Gondomar", "lat": 50.0000, "lon": 50.0000, "alt": 12.5000},
+        {"id": 4, "name": "Maia", "lat": 22.8206, "lon": -19.4217, "alt": 43.7500},
+        {"id": 5, "name": "Matosinhos", "lat": 37.4080, "lon": -22.8394, "alt": 21.8750},
+        {"id": 6, "name": "Oliveira de Azeméis", "lat": -5.0756, "lon": -50.0000, "alt": 46.8750},
+        {"id": 7, "name": "Paredes", "lat": -33.4754, "lon": -21.2052, "alt": 0.0000},
+        {"id": 8, "name": "Porto", "lat": 24.3898, "lon": -24.9214, "alt": 37.5000},
+        {"id": 9, "name": "Póvoa de Varzim", "lat": 49.9225, "lon": -7.4403, "alt": 25.0000},
+        {"id": 10, "name": "Santa Maria da Feira", "lat": 8.7369, "lon": -43.0783, "alt": 6.2500},
+        {"id": 11, "name": "Santo Tirso", "lat": -5.6955, "lon": -10.3708, "alt": 40.6250},
+        {"id": 12, "name": "São João da Madeira", "lat": -2.4215, "lon": -45.1446, "alt": 18.7500},
+        {"id": 13, "name": "Trofa", "lat": 11.0035, "lon": -10.6851, "alt": 28.1250},
+        {"id": 14, "name": "Vale de Cambra", "lat": -20.8446, "lon": -49.6622, "alt": 3.1250},
+        {"id": 15, "name": "Valongo", "lat": -0.9492, "lon": -22.5016, "alt": 50.0000},
+        {"id": 16, "name": "Vila do Conde", "lat": 47.4041, "lon": -9.6952, "alt": 9.3750},
+        {"id": 17, "name": "Vila Nova de Gaia", "lat": 21.0384, "lon": -27.5927, "alt": 31.2500}
     ]
 }
 const K_CIRCULO = 2.1;

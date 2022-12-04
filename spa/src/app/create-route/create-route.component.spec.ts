@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateRouteComponent } from './create-route.component';
+import {RoutesService} from "../Service/routes.service";
 
 describe('CreateRouteComponent', () => {
   let component: CreateRouteComponent;
@@ -8,7 +9,10 @@ describe('CreateRouteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateRouteComponent ]
+      declarations: [ CreateRouteComponent ],
+      providers: [
+        {provide: RoutesService, useClass: RoutesService}
+      ]
     })
     .compileComponents();
 
