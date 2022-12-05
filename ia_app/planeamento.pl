@@ -297,6 +297,17 @@ entrega(4438, 20221205, 150, 9, 7, 9).
 entrega(4445, 20221205, 100, 3, 5, 7).
 entrega(4443, 20221205, 120, 8, 6, 8).
 entrega(4449, 20221205, 300, 11, 15, 20).
+%entrega(4398, 20221205, 310, 17, 16, 20).
+%entrega(4432, 20221205, 270, 14, 14, 18).
+%entrega(4437, 20221205, 180, 12, 9, 11).
+%entrega(4451, 20221205, 220, 6, 9, 12).
+%entrega(4452, 20221205, 390, 13, 21, 26).
+%entrega(4444, 20221205, 380, 2, 20, 25).
+%entrega(4455, 20221205, 280, 7, 14, 19).
+%entrega(4399, 20221205, 260, 15, 13, 18).
+%entrega(4454, 20221205, 350, 10, 18, 22).
+%entrega(4446, 20221205, 260, 4, 14, 17).
+%entrega(4456, 20221205, 330, 16, 17, 21).
 
 %idArmazem(<local_>,<codigo>)
 idArmazem('Arouca',1).
@@ -316,3 +327,209 @@ idArmazem('Vale de Cambra',14).
 idArmazem('Valongo',15).
 idArmazem('Vila do Conde',16).
 idArmazem('Vila Nova de Gaia',17).
+
+tare(7500).
+
+maxTruckWeight(11800).
+
+maxTruckCharge(80).
+
+chargeAt80(64).
+
+chargeAt20(16).
+
+%---------------------------------------------------------------------------------------------
+% GET THE TIME
+
+sum_weights([],[],0).
+sum_weights([CurrentCity|LC],[CurrentWeight|LP],CurrentWeight):-
+        sum_weights(LC,LP,CurrentWeight1),
+        entrega(_,_,Weight,CurrentCity,_,_),
+        CurrentWeight is Weight+CurrentWeight1.
+
+
+
+add_tare(Tare,[],[Tare]).
+add_tare(Tare,[DeliveryWeight|LP],[WeightPlusTare|LPT]):-
+            add_tare(Tare,LP,LPT),
+            WeightPlusTare is DeliveryWeight + Tare.
+
+totalWeight(TotalWeight):-
+                sum_weights(_,PesoTotalCarga),
+                TotalWeight is PesoTotalCarga + 7500.
+
+
+calculate_time(LCities,Time):-
+
+                sum_weights(LCities,LDeliveryWeight,_),
+                tare(Tare),
+
+                add_tare(Tare,LDeliveryWeight,LWeightPlusTare),
+                idArmazem('Matosinhos', A),
+
+                append([A|LCities],[A],Path),
+
+                maxTruckCharge(MaxTruckCharge),
+
+
+                travel_time(Path,LWeightPlusTare,Time,MaxTruckCharge).
+
+
+
+travel_time([_],[],0,_).
+travel_time([C1,C2|RestPath],[CurrentTruckWeight|RestLoad],Time,TruckEnergy):-
+
+
+
+                dadosCam_t_e_ta(_,C1,C2,DeliveryTime,E,_),
+
+                ((entrega(_,_,_,C1,_,UnloadingTime),!,true);
+                 (UnloadingTime is 0)),
+
+                maxTruckWeight(MaxTruckWeight),
+
+                %write('Truck Energy: '+ TruckEnergy),nl,
+
+
+                EnergyN is E * CurrentTruckWeight/MaxTruckWeight,
+
+                RemainingEnergy is TruckEnergy - EnergyN,
+
+                chargeAt20(ChargeAt20),
+
+                ((RemainingEnergy < ChargeAt20, !, ((C2 == 5, !, ChargeTime is (ChargeAt20 - RemainingEnergy) * 60/48, TruckEnergy1 is ChargeAt20);
+                                                (chargeAt80(ChargeAt80), ChargeTime is (ChargeAt80 - TruckEnergy) * 60 /48, TruckEnergy1 is ChargeAt80 - EnergyN)));
+                (TruckEnergy1 is TruckEnergy - EnergyN, ChargeTime is 0)),
+
+
+                ((TruckEnergy1 < ChargeAt20, !, dadosCam_t_e_ta(_,C1,C2,_,_,ExtraTime), TruckEnergy2 is ChargeAt20);
+                (ExtraTime is 0, TruckEnergy2 is TruckEnergy1)),
+
+
+                travel_time([C2|RestPath],RestLoad,Time1,TruckEnergy2),
+
+
+                ((ChargeTime < UnloadingTime, !, Time is (DeliveryTime * CurrentTruckWeight/MaxTruckWeight) + UnloadingTime + ExtraTime + Time1);
+                (Time is (DeliveryTime * CurrentTruckWeight/MaxTruckWeight) + ChargeTime + ExtraTime + Time1)).
+
+                %write('Time: '+ Time),nl.
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------
+% OPTIMAL_SOLUTION
+
+seq_min_time(LC,Time,TSol):-
+        get_time(Ti),
+        (run;true),
+        min_time(LC,Time),
+        get_time(Tf),
+        TSol is Tf-Ti.
+
+
+run:-   retractall(min_time(_,_)),
+        assertz(min_time(_,10000000)),
+        findall(City,entrega(_,_,_,City,_,_),LCities),
+        permutation(LCities,LCitiesPerm),
+        calculate_time(LCitiesPerm,Time),
+        atualiza(LCitiesPerm,Time),
+        fail.
+
+atualiza(LCPerm,Time):-
+        min_time(_,MinTime),
+        ( ( Time<MinTime ,!, retract(min_time(_,_)) , assertz(min_time(LCPerm,Time)) , write(Time),nl)
+        ;true).
+
+
+% --------------------------------------------------------
+% FIRST_HEURISTICS (SHORTEST PATH)
+
+shortest_path([City],[City]).
+shortest_path([OriginCity|RestCities],[OriginCity|ShortestPath]):-
+
+                shortest_path1(OriginCity,RestCities, SelecCity),
+                deleteCity(SelecCity,RestCities,RestCities1),
+                shortest_path([SelecCity|RestCities1], ShortestPath).
+
+
+shortest_path1(_,[C], C).
+shortest_path1(CurrentCity, [C1|RC], SelecCity):-
+
+                shortest_path1(CurrentCity,RC,SelecCity1),
+                dadosCam_t_e_ta(_,CurrentCity,C1,T,_,_),
+                dadosCam_t_e_ta(_,CurrentCity,SelecCity1,T1,_,_),
+
+
+                ((T<T1,!,SelecCity is C1);(SelecCity is SelecCity1)).
+
+deleteCity(SelecCity,[SelecCity|RestCities],RestCities).
+deleteCity(SelecCity, [City|RestCities], [City|LC]):- deleteCity(SelecCity,RestCities,LC).
+
+%FOR calculate_time
+
+%append([A|LCities],[],Path1),
+%shortest_path(Path1,ShortestPath),
+%append(ShortestPath,[A],Path),
+
+%------------------------------------------------------------------------------------------------------------------------
+% SECOND_HEURISTICS (GREATER LOAD PATH)
+
+greater_load_path([City],[City]).
+greater_load_path([OriginCity|RestCities],[OriginCity|GreaterLoadPath]):-
+
+                greater_load_path1(OriginCity,RestCities, SelecCity),
+                deleteCity(SelecCity,RestCities,RestCities1),
+                greater_load_path([SelecCity|RestCities1], GreaterLoadPath).
+
+
+greater_load_path1(_,[C], C).
+greater_load_path1(CurrentCity, [C1|RC], SelecCity):-
+
+                greater_load_path1(CurrentCity,RC,SelecCity1),
+
+                entrega(_,_,M,C1,_,_),
+                entrega(_,_,M1,SelecCity1,_,_),
+
+
+                ((M>M1,!,SelecCity is C1);(SelecCity is SelecCity1)).
+
+%eliminarCiudad(SelecCity,[SelecCity|RestCities],RestCities).
+%eliminarCiudad(SelecCity, [City|RestCities], [City|LC]):- eliminarCiudad(SelecCity,RestCities,LC).
+
+%FOR calculate_time
+
+%append([A|LCities],[],Path1),
+%greater_load_path(Path1,GreaterLoadPath),
+%append(GreaterLoadPath,[A],Path),
+
+%------------------------------------------------------------------------------------------------------------------------
+% THIRD_HEURISTICS (SAFEST PATH)
+
+safest_path([City],[City]).
+safest_path([OriginCity|RestCities],[OriginCity|SafestPath]):-
+
+                safest_path1(OriginCity,RestCities, SelecCity),
+                deleteCity(SelecCity,RestCities,RestCities1),
+                safest_path([SelecCity|RestCities1], SafestPath).
+
+
+safest_path1(_,[C], C).
+safest_path1(CurrentCity, [C1|RC], SelecCity):-
+
+                safest_path1(CurrentCity,RC,SelecCity1),
+
+                entrega(_,_,M,C1,_,_),
+                entrega(_,_,M1,SelecCity1,_,_),
+
+                dadosCam_t_e_ta(_,CurrentCity,C1,T,_,_),
+                dadosCam_t_e_ta(_,CurrentCity,SelecCity1,T1,_,_),
+
+                Div is M/T,
+                Div1 is M1/T1,
+
+                ((Div>Div1,!,SelecCity is C1);(SelecCity is SelecCity1)).
+
+%FOR calculate_time
+
+%append([A|LCities],[],Path1),
+%safest_path(Path1,SafestPath),
+%append(SafestPath,[A],Path),
