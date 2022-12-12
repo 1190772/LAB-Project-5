@@ -28,6 +28,7 @@ import {FormsModule} from "@angular/forms";
 import { RoadNetworkComponent } from './road-network/road-network.component';
 import {ListTrucksComponent} from "./list-trucks/list-trucks.component";
 import { ListRoutesComponent } from './list-routes/list-routes.component';
+import { ListWarehousesComponent } from './list-warehouses/list-warehouses.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ListRoutesComponent } from './list-routes/list-routes.component';
     ListDeliveriesComponent,
     RoadNetworkComponent,
     ListTrucksComponent,
-    ListRoutesComponent
+    ListRoutesComponent,
+    ListWarehousesComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import {RoadNetworkComponent} from "./road-network/road-network.component";
 import {ListDeliveriesComponent} from "./list-deliveries/list-deliveries.component";
 import {ListTrucksComponent} from "./list-trucks/list-trucks.component";
 import {ListRoutesComponent} from "./list-routes/list-routes.component";
+import {ListWarehousesComponent} from "./list-warehouses/list-warehouses.component";
 
 const routes: Routes = [
   {path: 'warehouse-manager', component: WarehouseManagerComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
   {path: 'list-deliveries',component:ListDeliveriesComponent},
   {path: 'list-trucks',component:ListTrucksComponent},
   {path: 'list-routes',component:ListRoutesComponent},
-
+  {path: 'list-warehouses',component:ListWarehousesComponent}
 
 ];
 
