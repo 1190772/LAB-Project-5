@@ -1,0 +1,28 @@
+This is a text file that explains what we did in the road network user stories.
+
+We started by adding the ambientLight to the scene so we can see the warehouses 3D model because they are not made of MeshBasicMaterial , material that does not require light to see it, so we have to add a light to see the warehouses, without this light we would still be able to see the roundabouts and the roads but not the warehouses.
+
+We add the axes helper (x,y,z) just to see the axes in the (0,0,0) coordinates.
+
+Then we copied the table from the Data document that they gave us in Moodle to use the coordinates.
+
+We do a loop for the table of data previously created (gData), we will create a circle for each node (city) and we will push it into an array.
+Then we set the position for that node position coordinates and we will get 17 circles in the x,y,z coordinates of the data table.
+We multiply the z coordinate for 0.3 because if we dont there are very 'high' z coordinates and the road network becomes strange because.
+There are roads that go up a lot , so for example a roundabout with coordinate_z=50 becomes a roundabout with coordinate_z=15 and it looks more aesthetically pretty.
+Then we use the gltf loader to load the imported warehouse model from the path that we give, we set the scale so the warehouses can fit the road network and then we set the position for the same position as each roundabout but we change the z coordinate to z+4 so the warehouse stays near the roundabout and not above the roundabout.
+The loop will do the same and will create a warehouse model for each node just like the roundabouts.
+We used the console logs to check for errors in the browser console
+
+Then we do a for loop that will create a connection element for each roundabout but we will have to change it because we need a connection element for each road and not for each roundabout.
+We set the same coordinates as each roundabout but the z coordinate its z - infinitesimal so we can see the connection element below each roundabout and not 'inside' it.
+Then we translate each connection link for half its size so it can go a bit out of the roundabout to connect to the road.
+
+We set the connections for all the cities, later we will connect more cities but we need to ask some questions to the teacher (city with index 0 connects with city with index 6 etc).
+
+createEdges is to create each road between the roundabouts, it receives 2 city indexes to do the connection.
+These parameter formulas are given in the documents, we calculate the projection of the road, the unevenness and the slope, all given in the documents.
+Then we find the middle point of each road so we can centre the road position in that middle point.
+We create the road with the calculated parameters and we rotate them in the roundabouts directions with the orientation formula given in the support documents and we put the slope in the road, then we set the coordinates for the middle point previously calculated and we add it to the scene (plane_mesh).
+
+Then we use this last formula given in the documents to rotate the connection in the direction of the roundabout.
