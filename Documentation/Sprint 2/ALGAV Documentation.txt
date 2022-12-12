@@ -1,0 +1,55 @@
+This is a text file where we explain what we did in the planning module.
+
+
+(sum_weights)
+The purpose of sum_weights predicate is to obtain the total weight that the truck will have to carry during all deliveries.
+The fact that this predicate returns a list is due to the fact that each of the elements of this list corresponds to the remaining load that the truck transports once it has unloaded the delivery in a new city.
+The predicate receives by parameters a list of cities corresponding to the delivery cities.
+The predicate returns a list in which the value of each element is given by 'Weight' in delivery(_,_,'Weight',CurrentCity,_,_), corresponding to the load of the delivery of 'CurrentCity' added to the result returned by the recursive call.
+
+
+(add_tare) 
+The objective of add_tare predicate is to increase the weight of the truck (tare) to the weight of each delivery.
+The predicate receives by parameter the truck tare and the current truck weights in the form of a list.
+The predicate returns the current truck weights plus the truck tare.
+
+
+(calculate_time )
+The objective of calculate_time predicate consists of calculating the time that the truck takes to leave the origin warehouse, deliver all the deliveries, and return to the origin warehouse, taking into account battery charging times, delivery unloading times, etc.
+The predicate receives as a parameter a list of cities corresponding to the cities where deliveries are made.
+The predicate returns the time of the journey.
+The first step that the predicate performs is to call the predicate 'sum_weights' to obtain the load that the truck will have to transport, load that is modified when delivering a delivery in each city .
+Then we add the tare weight to the weight of the truck load by calling the predicate 'add_tare'.
+As a third step, we add to the list of cities 'LCities' the Matosinhos warehouse both at the beginning and at the end of the list to make the route.
+Finally, with the route formed and the total weight of the truck, we call the predicate 'travel_time', from which we will obtain the travel time of the route formed.
+
+
+(travel_time) 
+The purpose of travel_time predicate is to calculate the time taking into account a number of possible circumstances that the truck may pass through.
+These circumstances translate into a use of time that can affect the overall computation of the journey.
+The truck´s battery charging times or the unloading times of the deliveries in each destination city are some of these circumstances.
+The predicate receives as parameters the route of cities where to make deliveries, the current weight of the truck and the energy of the truck.
+The predicate returns the time of the journey expressed in minutes.
+
+
+Consequence 1: The truck´s battery needs to be charged because it would need more energy to make a new shipment than the truck has.
+
+                ((RemainingEnergy < ChargeAt20, !, ((C2 == 5, !, ChargeTime is (ChargeAt20 - RemainingEnergy) * 60/48, TruckEnergy1 is ChargeAt20);
+                                                (chargeAt80(ChargeAt80), ChargeTime is (ChargeAt80 - TruckEnergy) * 60 /48, TruckEnergy1 is ChargeAt80 - EnergyN)));
+                (TruckEnergy1 is TruckEnergy - EnergyN, ChargeTime is 0)),
+
+Consequence 2: An extra charge needs to be applied to the truck´s battery because the journey to make a new shipment requires more energy than the energy provided by a standard charge.
+
+                ((TruckEnergy1 < ChargeAt20, !, dadosCam_t_e_ta(_,C1,C2,_,_,ExtraTime), TruckEnergy2 is ChargeAt20);
+                (ExtraTime is 0, TruckEnergy2 is TruckEnergy1)),
+                
+                travel_time([C2|RestPath],RestLoad,Time1,TruckEnergy2),
+
+
+                ((ChargeTime < UnloadingTime, !, Time is (DeliveryTime * CurrentTruckWeight/MaxTruckWeight) + UnloadingTime + ExtraTime + Time1);
+                (Time is (DeliveryTime * CurrentTruckWeight/MaxTruckWeight) + ChargeTime + ExtraTime + Time1)).
+                
+                %write('Time: '+ Time),nl.
+
+
+
